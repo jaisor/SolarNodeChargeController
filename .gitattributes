@@ -1,0 +1,20 @@
+# KiCad writes LF; keep it that way on Windows checkouts (core.autocrlf) to avoid whole-file diffs.
+*.kicad_pro     text eol=lf
+*.kicad_sch     text eol=lf
+*.kicad_pcb     text eol=lf
+*.kicad_sym     text eol=lf
+*.kicad_mod     text eol=lf
+*.kicad_dru     text eol=lf
+*.kicad_wks     text eol=lf
+sym-lib-table   text eol=lf
+fp-lib-table    text eol=lf
+*.js            text eol=lf
+*.md            text eol=lf
+.gitignore      text eol=lf
+.gitattributes  text eol=lf
+
+*.pdf           binary
+*.png           binary
+*.step          binary
+*.wrl           binary
+*.zip           binary

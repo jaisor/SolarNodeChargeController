@@ -1,0 +1,29 @@
+# KiCad lock files (present while a project/editor is open)
+*.lck
+
+# Per-user project state: open sheets, layer visibility, zoom
+*.kicad_prl
+
+# KiCad caches and automatic backups
+fp-info-cache
+*-backups/
+_autosave-*
+\#auto_saved_files\#
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.sch-bak
+*-bak
+
+# Manual backups (git history replaces them)
+*.bak
+*.bak-*
+
+# Generated outputs: ERC/DRC reports, BOM, rendered PDFs, Gerbers.
+# Regenerate with kicad-cli / the kicad MCP; attach fab packages to a release tag instead.
+output/
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/

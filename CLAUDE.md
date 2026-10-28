@@ -1,0 +1,106 @@
+# Solar Node Charge Controller
+
+KiCad 10 project for a solar-powered 1S LiPo charger board that powers a separate module (e.g. a LoRa/mesh node) and reports power data to an external MCU over I2C.
+
+- KiCad project: `SolarNodeChargeController/SolarNodeChargeController.kicad_pro` (the template nests `<name>/<name>/`)
+- Schematic: single A3 sheet, `SolarNodeChargeController/SolarNodeChargeController.kicad_sch`
+- PCB: `SolarNodeChargeController.kicad_pcb` is still the empty template — layout not started
+- Rendered schematic: `SolarNodeChargeController/output/docs/schematic.pdf`
+
+## Status
+
+Schematic complete and reviewed; ERC is clean (0 items at all severities) and the netlist has been checked net-by-net. Next steps: Update PCB from Schematic, board outline, placement/routing, then DRC and fabrication exports.
+
+## Circuit summary
+
+Datasheets: CN3791 https://naylampmechatronics.com/img/cms/001216/CN3791.PDF · INA219 https://www.ti.com/lit/ds/symlink/ina219.pdf
+
+```
+J1..J4 (5V panels) -> D5..D8 1N5819 -> PV -> R7 0.1R -> VIN -> Q1 AO3401A -> SW node -> L1 22uH -> CSP -> R5 0.12R -> VBAT
+                                                                     D2 SS34 to GND                                   |
+VBAT -> J7 SW_BATT (panel switch) -> BATT+ -> R6 0.1R -> BAT_CELL -> J5 LiPo                                           |
+VBAT -> J8 SW_LOAD (panel switch) -> VOUT -> J6                                                                        |
+U2 INA219 IN+/IN- <- SW3 DPDT: SOLAR = (PV, VIN) across R7 | BATT = (BATT+, BAT_CELL) across R6 ; I2C on J9 ------------+
+```
+
+### Charger (CN3791, datasheet Figure 1)
+| Ref | Value | Notes |
+|---|---|---|
+| U1 | CN3791, SSOP-10 1.0mm pitch | Custom symbol in `SolarNode.kicad_sym` (project lib). Footprint `Package_SO:SSOP-10_3.9x4.9mm_P1.00mm` |
+| Q1 | AO3401A (SOT-23) | P-FET pass switch; gate = DRV net (U1 pin 10). Logic-level, fine at ~5V Vgs |
+| D2 | SS34 (SMA) | Catch diode |
+| D1 | — (intentionally unused) | Datasheet blocking diode omitted for ~0.4V headroom; D5–D8 already keep the battery out of the panels. Cost: ~21µA battery drain in the dark via L1 + Q1 body diode |
+| L1 | 22µH, Bourns SRN6045TA | Datasheet: L > 5×(VCC−VBAT) µH ≈ 16µH; ~0.2A ripple at 6V in / 3.7V batt |
+| R5 | 0.12Ω 1% 1206 | Charge current = 120mV / R5 = **1.0A** (user confirmed 1A; 0.24Ω would give 0.5A) |
+| R3/R4 | 28.0k / 10k 1% | MPPT setpoint VIN = 1.205 × (1 + R3/R4) = **4.58V** (user chose 4.6V over the original 5.0V). Panels sit ~0.3–0.45V higher (diode drop) ≈ typical 5V-panel Vmp. Charging starts when VIN > ~4.68V |
+| C1, C5 | 10µF/25V 1206, 100nF/25V | Input caps on VIN |
+| C2 | 100nF | VG–VCC |
+| C3 | 22µF/10V 1206 | Output cap on VBAT |
+| R2 + C4 | 120Ω + 220nF | COM compensation (datasheet-mandated) |
+| R1, D4, D3 | 1k, red LED, green LED | D4 red on ~CHRG = charging; D3 green on ~DONE = done |
+
+### Solar inputs
+- J1–J4: JST-PH 2-pin, value `Solar_5V`, up to four 5V panels in parallel.
+- D5–D8: 1N5819 (DO-41 THT, 40V/1A), one per panel, OR-ed onto the PV bus. A single panel at 1A charge carries ~0.9A through its diode (within rating, but close).
+- MPPT divider senses VIN (after the diodes and R7), not the raw panel voltage. Constant-voltage MPPT: one setpoint for all panels, tuned for panels in good light. Lowering it further (e.g. 4.2V) was discussed and rejected: it drags sunny panels off their MPP and leaves no headroom above the battery.
+
+### Battery, load and switches
+- J5: battery, JST-PH (`LiPo_1S_4.2V`), on net BAT_CELL.
+- J7 `SW_BATT`, J8 `SW_LOAD`: JST-XH 2-pin (3A) connectors for **off-board panel-mount SPST switches** (user's choice over on-board slide switches; KiCad's stock slide switches such as EG1271 are only rated ~0.3A). XH vs PH keying means switch leads can't be plugged into power connectors.
+  - SW_BATT: VBAT ↔ BATT+. Isolates the cell from charger and load.
+  - SW_LOAD: VBAT ↔ VOUT. Cuts only the load; the cell keeps charging.
+  - Switch rating: ≥1A or the module's peak current, whichever is higher. The battery switch carries the battery's net current (charge OR discharge), not the sum.
+  - With SW_BATT off in sun, the CN3791 sees no battery and VBAT pulses near 4.2V (datasheet "battery not present") — keep SW_LOAD off then.
+- J6 `VOUT`: JST-PH 2-pin output to the powered module.
+
+### INA219 power monitor
+- U2: INA219AID (SOIC-8, `Sensor_Energy:INA219AxD`). A0 = A1 = GND → I2C address **0x40**. C6 100nF bypass.
+- Shunts: R7 0.1Ω (solar, PV→VIN) and R6 0.1Ω (battery, BATT+→BAT_CELL), both 1% 1206, always in circuit. 0.1Ω matches the common INA219 breakout, so stock library calibration (32V/2A, PGA /8, ±320mV ≈ ±3.2A, ~0.8mA LSB) works unchanged. Each drops ~0.1V at 1A.
+- SW3: on-board DPDT slide switch (C&K JS202011CQN), signal-level only. Pole 1 common (pin 2) → SENSE+ → U2 IN+; pole 2 common (pin 5) → SENSE− → U2 IN−.
+  - SOLAR (pins 1/6): IN+ = PV, IN− = VIN → panel current (≥ 0); bus voltage = VIN.
+  - BATT (pins 3/4): IN+ = BATT+, IN− = BAT_CELL → battery current, + charging / − discharging; bus voltage = cell voltage (readable even with SW_BATT open, since R6 is on the cell side).
+  - User chose one INA219 + switch over two INA219s (0x40/0x41). The MCU cannot sense SW3's position.
+- J9 `I2C_MCU` (2.54mm 1x4 header): 1 VCC_MCU (3.3–5V from the MCU; powers U2 and pull-ups), 2 SDA, 3 SCL, 4 GND. R8/R9 10k pull-ups to VCC_MCU — omit if the MCU board has its own. INA219 inputs tolerate 0–26V with VS unpowered.
+
+## Tooling and workflow
+
+### Version control
+Git repo at this folder (branch `main`). Tracked: `.kicad_pro/.kicad_sch/.kicad_pcb`, `SolarNode.kicad_sym`, `sym-lib-table`, `tools/`, `CLAUDE.md`. Ignored (see `.gitignore`): `*.kicad_prl` (per-user view state), `*.lck`, KiCad autosaves/backups, `*.bak*`, and `output/` (regenerable reports, BOM, PDFs, fab files — attach fab packages to a release tag instead). `.gitattributes` pins KiCad files to LF because `core.autocrlf=true` on this machine.
+
+### MCP server
+User-scope `kicad` MCP server (PyPI `kicad-mcp-server` 3.5.0, run with KiCad's Python), configured in `~/.claude.json` with env vars:
+- `KICAD_MCP_PROJECTS_BASE` = this folder (projects are its direct subfolders, so the project name is `SolarNodeChargeController`)
+- `KICAD_MCP_TASKS_DIR` = `C:\Users\jaiso\Documents\KiCad\10.0\mcp-tasks`
+- `KICAD_MCP_KICAD_CLI` = `C:\Program Files\KiCad\10.0\bin\kicad-cli.exe`
+
+It is **read/export only** (ERC, DRC, board info, BOM, netlist, Gerbers, PDF/SVG, STEP, JLCPCB package) — it cannot add parts or wires. Known issues:
+- `run_erc` reports `violations: 0` even when the report has errors. Read `output/reports/erc_report.json` or use `kicad-cli sch erc --severity-all`.
+- Autorouting (FreeRouting/nohup) and 3D render (xvfb-run) do not work on Windows.
+
+### Editing the schematic
+The schematic is generated by `tools/gen-schematic.js` (Node), which writes the whole `.kicad_sch` plus `SolarNode.kicad_sym` and `sym-lib-table`:
+
+```
+node tools/gen-schematic.js SolarNodeChargeController
+```
+
+- **The generator is the source of truth only while no one edits the schematic in KiCad.** If the user saves changes from the Schematic Editor, port them into the generator (or switch to surgical edits) before regenerating, or they are lost.
+- Before writing: make sure the Schematic Editor is closed (`~SolarNodeChargeController.kicad_sch.lck` absent), or check the file's mtime against the last generation. After writing, the user must close the editor **without saving** and reopen.
+- Commit (or confirm a clean `git status`) before regenerating, so the previous schematic is recoverable from history. Old `*.kicad_sch.bak-*` files from before git are ignored and can be deleted.
+- Verify every change:
+  1. `kicad-cli sch export netlist --format kicadxml` and check each net's pins
+  2. `kicad-cli sch erc --format json --severity-all` → expect 0 items
+  3. `kicad-cli sch export pdf -o output/docs/schematic.pdf` and look at it for overlapping text
+
+### .kicad_sch format gotchas (KiCad 10)
+- kicad-cli only says "Failed to load schematic" on parse errors; bisect by stripping elements. A seen cause was an unescaped `\"` copied from a library property (power:GND Description).
+- Derived library symbols (`extends`, e.g. Diode:SS34, Diode:1N5819, Transistor_FET:AO3401A) must be flattened when embedded in `lib_symbols`. Some libraries use CRLF line endings.
+- Placed-symbol angle rotates counter-clockwise on screen; library Y is up, schematic Y is down. Field angles are relative to the symbol: use 360−rot for 90/270 to keep text horizontal, 0 for 180.
+- Multi-line text grows upward from its anchor (justify bottom).
+- `kicad-cli` is at `C:\Program Files\KiCad\10.0\bin\kicad-cli.exe` (not on PATH); `claude` CLI is not on PATH either; `pdftotext` is available for reading datasheets.
+
+## Open items / reminders
+- PCB layout: keep the CN3791 power loop (Q1, D2, L1, C1) tight. Kelvin-connect CSP/BAT to R5 (datasheet Fig. 3) and IN+/IN− to R6/R7. Return the COM network to U1 GND (datasheet p.9–10).
+- Choose and buy the two panel-mount switches (≥1A).
+- Reference designators have a gap at D1 by design; re-annotate after layout if desired.
+- Optional: INA219 input RC filter (datasheet §9.2) only if readings are noisy; firmware averaging is usually enough.
