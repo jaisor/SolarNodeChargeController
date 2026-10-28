@@ -87,7 +87,7 @@ U2 INA219 IN+/IN- <- SW3 DPDT: SOLAR = (PV, VIN) across R7 | BATT = (BATT+, BAT_
 ## Tooling and workflow
 
 ### Version control
-Git repo at this folder (branch `main`), remote `origin` = https://github.com/jaisor/SolarNodeChargeController (private). Tracked: `.kicad_pro/.kicad_sch/.kicad_pcb`, `SolarNode.kicad_sym`, `sym-lib-table`, `tools/` (schematic generator, PCB placement script), `CLAUDE.md`. Ignored (see `.gitignore`): `*.kicad_prl` (per-user view state), `*.lck`, KiCad autosaves/backups, `*.bak*`, and `output/` (regenerable reports, BOM, PDFs, fab files — attach fab packages to a release tag instead). `.gitattributes` pins KiCad files to LF because `core.autocrlf=true` on this machine.
+Git repo at this folder (branch `main`), remote `origin` = https://github.com/jaisor/SolarNodeChargeController (private). Tracked: `.kicad_pro/.kicad_sch/.kicad_pcb`, `SolarNode.kicad_sym`, `sym-lib-table`, `tools/` (schematic generator, PCB placement script), `CLAUDE.md`, `README.md` with images in `docs/images/` (schematic SVG, top and angled 3D renders — regenerate them when the design changes; commands are in the README). Ignored (see `.gitignore`): `*.kicad_prl` (per-user view state), `*.lck`, KiCad autosaves/backups, `*.bak*`, and `output/` (regenerable reports, BOM, PDFs, fab files — attach fab packages to a release tag instead). `.gitattributes` pins KiCad files to LF because `core.autocrlf=true` on this machine.
 
 ### MCP server
 User-scope `kicad` MCP server (PyPI `kicad-mcp-server` 3.5.0, run with KiCad's Python), configured in `~/.claude.json` with env vars:
