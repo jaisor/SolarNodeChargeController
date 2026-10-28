@@ -8,7 +8,13 @@ const LIBDIR = "C:/Program Files/KiCad/10.0/share/kicad/symbols";
 const PROJ = process.argv[2];
 const NAME = "SolarNodeChargeController";
 const SCH = path.join(PROJ, NAME + ".kicad_sch");
-const uuid = () => crypto.randomUUID();
+// Deterministic UUIDs keyed by what an item is (symbol ref, wire endpoints, ...), so
+// regenerating keeps symbol identities stable for the PCB links and keeps git diffs small.
+function uuid(key) {
+  const h = crypto.createHash("sha1").update(`${NAME}/${key}`).digest("hex");
+  const variant = (8 | (parseInt(h[16], 16) & 3)).toString(16);
+  return `${h.slice(0, 8)}-${h.slice(8, 12)}-4${h.slice(13, 16)}-${variant}${h.slice(17, 20)}-${h.slice(20, 32)}`;
+}
 const r = (v) => Math.round(v * 1e4) / 1e4;
 
 // ---------- s-expression helpers ----------
@@ -188,8 +194,9 @@ const FP = {
   c0603: "Capacitor_SMD:C_0603_1608Metric",
   c1206: "Capacitor_SMD:C_1206_3216Metric",
   led: "LED_SMD:LED_0603_1608Metric",
-  jst: "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
-  xh: "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+  // Micro JST 1.25 (Molex PicoBlade-compatible) headers; mate with 51021 female cable housings.
+  pico2: "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical",
+  pico4: "Connector_Molex:Molex_PicoBlade_53047-0410_1x04_P1.25mm_Vertical",
 };
 
 // ---------- circuit ----------
@@ -201,8 +208,8 @@ const BUS_X = 50.8;
 const taps = [];
 for (let i = 0; i < 4; i++) {
   const y = 60.96 + i * 12.7;
-  const J = place(`J${i + 1}`, "Connector_Generic:Conn_01x02", 25.4, y, { mirror: "y", value: "Solar_5V", fp: FP.jst });
-  const D = placeByPin(`D${i + 5}`, "Diode:1N5819", "2", P(35.56, y), { rot: 180, value: "1N5819" });
+  const J = place(`J${i + 1}`, "Connector_Generic:Conn_01x02", 25.4, y, { mirror: "y", value: "Solar_5V", fp: FP.pico2 });
+  const D = placeByPin(`D${i + 5}`, "Diode:1N5819WS", "2", P(35.56, y), { rot: 180, value: "1N5819WS" });
   wire(J.pin("1"), D.pin("2"));
   wire(D.pin("1"), P(BUS_X, y));
   gnd(wire(J.pin("2"), P(33.02, J.pin("2").y), P(33.02, y + 5.08)));
@@ -249,7 +256,7 @@ junction(SW);
 const CSP = P(167.64, RAIL);
 wire(L1.pin("2"), CSP);
 stub(CSP, "up", "CSP", 5.08);
-const R5 = placeByPin("R5", "Device:R", "1", P(172.72, RAIL), { rot: 90, value: "0.12R 1%", fp: FP.r1206 });
+const R5 = placeByPin("R5", "Device:R", "1", P(172.72, RAIL), { rot: 90, value: "0.15R 1%", fp: FP.r1206 });
 wire(CSP, R5.pin("1"));
 junction(CSP);
 const VB = P(185.42, RAIL);
@@ -262,7 +269,7 @@ wire(VB, C3.pin("1"));
 junction(C3.pin("1"));
 // Off-board panel switches: J7 cuts the cell off from charger and load,
 // J8 switches only the load output so charging continues with it off.
-const J7 = placeByPin("J7", "Connector_Generic:Conn_01x02", "1", P(220.98, RAIL), { value: "SW_BATT", fp: FP.xh });
+const J7 = placeByPin("J7", "Connector_Generic:Conn_01x02", "1", P(220.98, RAIL), { value: "SW_BATT", fp: FP.pico2 });
 wire(C3.pin("1"), J7.pin("1"));
 stub(J7.pin("2"), "left", "BATT+", 5.08);
 
@@ -274,15 +281,15 @@ const cell = P(213.36, 68.58);
 wire(R6.pin("2"), cell);
 stub(cell, "up", "BAT_CELL", 5.08);
 junction(cell);
-const J5 = placeByPin("J5", "Connector_Generic:Conn_01x02", "1", P(220.98, 68.58), { value: "LiPo_1S_4.2V", fp: FP.jst });
+const J5 = placeByPin("J5", "Connector_Generic:Conn_01x02", "1", P(220.98, 68.58), { value: "LiPo_1S_4.2V", fp: FP.pico2 });
 wire(cell, J5.pin("1"));
 gnd(wire(J5.pin("2"), P(218.44, J5.pin("2").y), P(218.44, 76.2)));
 
-const J8 = placeByPin("J8", "Connector_Generic:Conn_01x02", "1", P(220.98, 86.36), { value: "SW_LOAD", fp: FP.xh });
+const J8 = placeByPin("J8", "Connector_Generic:Conn_01x02", "1", P(220.98, 86.36), { value: "SW_LOAD", fp: FP.pico2 });
 stub(J8.pin("1"), "left", "VBAT", 5.08);
 stub(J8.pin("2"), "left", "VOUT", 5.08);
 
-const J6 = placeByPin("J6", "Connector_Generic:Conn_01x02", "1", P(246.38, 86.36), { value: "VOUT", fp: FP.jst });
+const J6 = placeByPin("J6", "Connector_Generic:Conn_01x02", "1", P(246.38, 86.36), { value: "VOUT", fp: FP.pico2 });
 stub(J6.pin("1"), "left", "VOUT", 5.08);
 gnd(wire(J6.pin("2"), P(243.84, J6.pin("2").y), P(243.84, 93.98)));
 
@@ -325,7 +332,7 @@ stub(R9.pin("1"), "up", "VCC_MCU");
 stub(R9.pin("2"), "down", "SCL");
 
 // I2C header to the external MCU: 1 VCC (3.3-5V), 2 SDA, 3 SCL, 4 GND
-const J9 = placeByPin("J9", "Connector_Generic:Conn_01x04", "1", P(388.62, 99.06), { value: "I2C_MCU", fp: "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" });
+const J9 = placeByPin("J9", "Connector_Generic:Conn_01x04", "1", P(388.62, 99.06), { value: "I2C_MCU", fp: FP.pico4 });
 stub(J9.pin("1"), "left", "VCC_MCU", 5.08);
 stub(J9.pin("2"), "left", "SDA", 5.08);
 stub(J9.pin("3"), "left", "SCL", 5.08);
@@ -373,15 +380,16 @@ TEXTS.push({
   at: P(40.64, 157.48),
   text: [
     "Design notes (CN3791 datasheet, Figure 1):",
-    "- Solar inputs J1-J4: up to four 5V panels in parallel, each isolated by a 1N5819 (40V/1A). MPPT senses VIN after these diodes,",
-    "  so each panel sits ~0.3-0.45V above the 4.6V setpoint (~4.9-5.0V, typical Vmp of a 5V panel). One panel alone carries ~0.9A at 1A charge.",
-    "- Charge current: ICH = 120mV / R5 = 120mV / 0.12R = 1.0A (R5 = 0.24R for 0.5A).",
+    "- Solar inputs J1-J4: up to four 5V panels in parallel, each isolated by a 1N5819WS (SOD-323, 40V/1A). MPPT senses VIN after these diodes,",
+    "  so each panel sits ~0.3-0.45V above the 4.6V setpoint (~4.9-5.0V, typical Vmp of a 5V panel). Panels peak at ~200-300mA each.",
+    "- Charge current: ICH = 120mV / R5 = 120mV / 0.15R = 0.8A, leaving margin on the 1.0A connector contacts (R5 = 0.24R for 0.5A).",
     "- MPPT setpoint: VMPPT = 1.205V x (1 + R3/R4) = 1.205 x (1 + 28.0k/10k) = 4.58V. Charging starts once MPPT > 1.23V (VIN > 4.68V).",
     "- L1: datasheet requires L > 5 x (VCC - VBAT) uH = 16uH at 6V Voc / 2.8V batt. 22uH gives ~0.2A ripple at 6V in, 3.7V batt.",
     "- Datasheet blocking diode D1 omitted to save ~0.4V headroom: D5-D8 keep the battery out of the panels; the CN3791 then draws ~21uA",
     "  from the battery via L1 and Q1's body diode when dark (datasheet p.9). Reference D1 is intentionally unused.",
     "- Status: D4 red ON = charging, D3 green ON = charge done. Both off = no input or VIN < VBAT.",
-    "- Panel-mount SPST switches plug into J7/J8 (JST-XH, 3A; PH is used for panels/battery so leads can't be swapped).",
+    "- All power connectors (J1-J8) are 2-pin Micro JST 1.25 / PicoBlade-compatible (1.0A per contact); J9 I2C is the 4-pin version.",
+    "  Panel-mount SPST switches plug into J7/J8. Same connector family everywhere, so check the silkscreen before plugging in.",
     "  J7 SW_BATT isolates the cell from charger and load. J8 SW_LOAD switches only VOUT (J6), so the cell keeps charging with it off.",
     "  Rate both switches >= 1A or the module's peak current, whichever is higher (battery current is charge OR load, not the sum).",
     "  With SW_BATT off in sun the CN3791 sees no battery and VBAT pulses near 4.2V: keep SW_LOAD off then.",
@@ -451,7 +459,7 @@ function emitPart(p) {
     prop("Datasheet", libDs, x, y, { hide: true }),
     prop("Description", libDesc, x, y, { hide: true }),
   ];
-  const pins = Object.keys(p.sym.pins).map((n) => `\t\t(pin "${n}"\n\t\t\t(uuid "${uuid()}")\n\t\t)`);
+  const pins = Object.keys(p.sym.pins).map((n) => `\t\t(pin "${n}"\n\t\t\t(uuid "${uuid(`pin/${p.ref}/${n}`)}")\n\t\t)`);
   return `\t(symbol
 		(lib_id "${p.libId}")
 		(at ${x} ${y} ${p.rot})
@@ -460,7 +468,7 @@ ${p.mirror ? `\t\t(mirror ${p.mirror})\n` : ""}		(unit 1)
 		(in_bom ${o.power ? "no" : "yes"})
 		(on_board ${o.power ? "no" : "yes"})
 		(dnp no)
-		(uuid "${uuid()}")
+		(uuid "${uuid(`sym/${p.ref}`)}")
 ${props.join("\n")}
 ${pins.join("\n")}
 		(instances
@@ -491,11 +499,11 @@ const out = [
 	(lib_symbols
 ${Object.values(SYMS).map((s) => "\t\t" + indent(s.text.replace(/^\t/, ""))).join("\n")}
 	)`,
-  ...NOCONNECTS.map((n) => `\t(no_connect\n\t\t(at ${n.x} ${n.y})\n\t\t(uuid "${uuid()}")\n\t)`),
-  ...JUNCTIONS.map((j) => `\t(junction\n\t\t(at ${j.x} ${j.y})\n\t\t(diameter 0)\n\t\t(color 0 0 0 0)\n\t\t(uuid "${uuid()}")\n\t)`),
-  ...WIRES.map(([a, b]) => `\t(wire\n\t\t(pts\n\t\t\t(xy ${a.x} ${a.y}) (xy ${b.x} ${b.y})\n\t\t)\n\t\t(stroke\n\t\t\t(width 0)\n\t\t\t(type default)\n\t\t)\n\t\t(uuid "${uuid()}")\n\t)`),
-  ...TEXTS.map((t) => `\t(text "${t.text}"\n\t\t(exclude_from_sim no)\n\t\t(at ${t.at.x} ${t.at.y} 0)\n\t\t(effects\n\t\t\t(font\n\t\t\t\t(size 1.27 1.27)\n\t\t\t)\n\t\t\t(justify left bottom)\n\t\t)\n\t\t(uuid "${uuid()}")\n\t)`),
-  ...LABELS.map((l) => `\t(label "${l.name}"\n\t\t(at ${l.at.x} ${l.at.y} ${l.ang})\n\t\t(effects\n\t\t\t(font\n\t\t\t\t(size 1.27 1.27)\n\t\t\t)\n\t\t\t(justify ${JUST[l.ang]})\n\t\t)\n\t\t(uuid "${uuid()}")\n\t)`),
+  ...NOCONNECTS.map((n) => `\t(no_connect\n\t\t(at ${n.x} ${n.y})\n\t\t(uuid "${uuid(`nc/${n.x},${n.y}`)}")\n\t)`),
+  ...JUNCTIONS.map((j) => `\t(junction\n\t\t(at ${j.x} ${j.y})\n\t\t(diameter 0)\n\t\t(color 0 0 0 0)\n\t\t(uuid "${uuid(`junction/${j.x},${j.y}`)}")\n\t)`),
+  ...WIRES.map(([a, b]) => `\t(wire\n\t\t(pts\n\t\t\t(xy ${a.x} ${a.y}) (xy ${b.x} ${b.y})\n\t\t)\n\t\t(stroke\n\t\t\t(width 0)\n\t\t\t(type default)\n\t\t)\n\t\t(uuid "${uuid(`wire/${a.x},${a.y}/${b.x},${b.y}`)}")\n\t)`),
+  ...TEXTS.map((t) => `\t(text "${t.text}"\n\t\t(exclude_from_sim no)\n\t\t(at ${t.at.x} ${t.at.y} 0)\n\t\t(effects\n\t\t\t(font\n\t\t\t\t(size 1.27 1.27)\n\t\t\t)\n\t\t\t(justify left bottom)\n\t\t)\n\t\t(uuid "${uuid(`text/${t.at.x},${t.at.y}`)}")\n\t)`),
+  ...LABELS.map((l) => `\t(label "${l.name}"\n\t\t(at ${l.at.x} ${l.at.y} ${l.ang})\n\t\t(effects\n\t\t\t(font\n\t\t\t\t(size 1.27 1.27)\n\t\t\t)\n\t\t\t(justify ${JUST[l.ang]})\n\t\t)\n\t\t(uuid "${uuid(`label/${l.name}/${l.at.x},${l.at.y}`)}")\n\t)`),
   ...PARTS.map(emitPart),
   `\t(sheet_instances
 		(path "/"

@@ -170,7 +170,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Diode:1N5819"
+		(symbol "Diode:1N5819WS"
 			(pin_numbers
 				(hide yes)
 			)
@@ -193,7 +193,7 @@
 					)
 				)
 			)
-			(property "Value" "1N5819"
+			(property "Value" "1N5819WS"
 				(at 0 -2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -203,7 +203,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+			(property "Footprint" "Diode_SMD:D_SOD-323"
 				(at 0 -4.445 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -214,7 +214,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "http://www.vishay.com/docs/88525/1n5817.pdf"
+			(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -225,7 +225,7 @@
 					)
 				)
 			)
-			(property "Description" "40V 1A Schottky Barrier Rectifier Diode, DO-41"
+			(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -247,7 +247,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "D*DO?41*"
+			(property "ki_fp_filters" "D*SOD?323*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -258,7 +258,7 @@
 					)
 				)
 			)
-			(symbol "1N5819_0_1"
+			(symbol "1N5819WS_0_1"
 				(polyline
 					(pts
 						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
@@ -296,7 +296,7 @@
 					)
 				)
 			)
-			(symbol "1N5819_1_1"
+			(symbol "1N5819WS_1_1"
 				(pin passive line
 					(at -3.81 0 0)
 					(length 2.54)
@@ -2728,91 +2728,91 @@
 		(at 50.8 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "6a411db3-18f2-4404-b2e1-49d4ddc1fe14")
+		(uuid "e29e52d8-3cf7-48bc-aee8-f147228d8be2")
 	)
 	(junction
 		(at 50.8 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "346327cd-9212-4bfd-ae0f-004118b8122d")
+		(uuid "c715560c-7b11-4714-a2e0-48914558656a")
 	)
 	(junction
 		(at 50.8 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c405b1b5-7026-4836-9007-3a0496ae3f32")
+		(uuid "9cd54f1e-540d-47b0-a647-38f8f4145c32")
 	)
 	(junction
 		(at 99.06 58.42)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b35d51d9-44b4-4906-b5d0-f12a40eeca15")
+		(uuid "37d9a6cf-df30-4a11-a18a-89a5dbadd7cf")
 	)
 	(junction
 		(at 63.5 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "1c45c60b-64dd-4676-b548-ee2f2e1c47e4")
+		(uuid "76312df2-45d3-44b8-b407-d099fcfa3554")
 	)
 	(junction
 		(at 68.58 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "fea91628-bbaf-45a6-8d7b-82dc2145cfa5")
+		(uuid "099c9c34-9305-4597-b2b0-2feb6f2d4af7")
 	)
 	(junction
 		(at 83.82 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "479e3e0b-0b6a-4960-ab4a-bc75073a971e")
+		(uuid "a1071828-abb7-4a09-bc80-af1c4eec275c")
 	)
 	(junction
 		(at 99.06 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "1b1b2329-74ff-44e0-8f61-67664a5ca161")
+		(uuid "f81c3f91-858f-4c4f-bd72-71c9be94ca49")
 	)
 	(junction
 		(at 144.78 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5401ea9a-ca32-474f-a503-1549e7e7c55f")
+		(uuid "92ae7acc-1e8e-49eb-8baa-f3d1577db9cf")
 	)
 	(junction
 		(at 167.64 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "530c17ae-b257-4ff4-8408-e014747d947e")
+		(uuid "f3acbbf8-7776-4f4c-9faf-2820bf31740d")
 	)
 	(junction
 		(at 185.42 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "959b2326-ab42-496e-a273-44039062d70e")
+		(uuid "4e2f423d-431c-46f8-a7cf-5f23ee0eb032")
 	)
 	(junction
 		(at 193.04 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ad8864f6-d40c-4838-8adc-9cd8cce9c4e5")
+		(uuid "3f7a8d9b-642c-450d-9dc7-e78c796b6cb3")
 	)
 	(junction
 		(at 213.36 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9555564b-4165-484f-9959-ee9a80298259")
+		(uuid "35b3e25b-60e3-4d49-872e-98d5f1c64667")
 	)
 	(junction
 		(at 335.28 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "58d40b9e-0552-431a-a625-819c9f1194e7")
+		(uuid "fd0bac46-e18a-41eb-b935-a9310d134f52")
 	)
 	(junction
 		(at 160.02 92.71)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "78f54539-b81f-4c8d-b9de-d1bbcd1ba367")
+		(uuid "16ee233c-c495-4d6a-924e-d7f9fa387098")
 	)
 	(wire
 		(pts
@@ -2822,7 +2822,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "edfeb19a-20a1-4e8d-aeba-d0191ae41373")
+		(uuid "896c2e35-d7a1-43d5-98c8-143817bd2dea")
 	)
 	(wire
 		(pts
@@ -2832,7 +2832,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "373b94b2-6a3f-497c-be40-86d728d167b3")
+		(uuid "747b8510-e5f7-42bd-94c7-312feeaef013")
 	)
 	(wire
 		(pts
@@ -2842,7 +2842,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0ef064b1-30a4-42ce-aa45-906dfdd54dce")
+		(uuid "e954cfd1-c85f-4be4-94f6-64d29b9876ef")
 	)
 	(wire
 		(pts
@@ -2852,7 +2852,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e8da3f33-a30d-4292-8d70-6a5d94614eb2")
+		(uuid "c5c2ae14-32cd-48e5-b8af-2f5c17e9157a")
 	)
 	(wire
 		(pts
@@ -2862,7 +2862,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7d885bfb-a9ad-4f6a-a0ce-2e599d387d4f")
+		(uuid "eb05ce39-b069-462d-80f4-b10f5b7d7eba")
 	)
 	(wire
 		(pts
@@ -2872,7 +2872,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1bc1d374-f76f-4ec9-824e-d447cfadd39a")
+		(uuid "28371e10-1a9f-4676-a4ce-3c19ac586627")
 	)
 	(wire
 		(pts
@@ -2882,7 +2882,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b6fc5cf4-1787-44fb-88ea-fbca0a1ca223")
+		(uuid "3caa26b2-426d-412e-9f6b-26b9c313092d")
 	)
 	(wire
 		(pts
@@ -2892,7 +2892,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c76ac126-a707-4022-ac4e-ebd06ec80a48")
+		(uuid "0224ad4b-1293-4071-ade7-5f3a52198bf9")
 	)
 	(wire
 		(pts
@@ -2902,7 +2902,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b1df668e-43b2-45b0-b560-878af34e3b6a")
+		(uuid "0ef945c1-bd60-4276-bb38-1adbc6dac387")
 	)
 	(wire
 		(pts
@@ -2912,7 +2912,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "370fb531-8645-442c-98ec-4c61012d900f")
+		(uuid "2f197115-bb13-4b2b-9525-5ada1a5a4c01")
 	)
 	(wire
 		(pts
@@ -2922,7 +2922,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a5c1e332-f000-40bb-88a2-2196ca36f25a")
+		(uuid "8ff372da-b505-4374-b4ab-0ca1521820d3")
 	)
 	(wire
 		(pts
@@ -2932,7 +2932,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6f89ad08-ecfe-4e46-b6f6-97998386f3b4")
+		(uuid "7b08ac38-61f3-4c88-ba78-e097c4776d26")
 	)
 	(wire
 		(pts
@@ -2942,7 +2942,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "af2b960d-aec9-4e15-9fcb-9cb8b1c87e57")
+		(uuid "eb85b227-266a-42f5-be28-e3337cd38206")
 	)
 	(wire
 		(pts
@@ -2952,7 +2952,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6a627824-a315-4c9d-aa77-44fb3e8d1a34")
+		(uuid "8e49113c-2120-4de5-bf3a-6337d90873da")
 	)
 	(wire
 		(pts
@@ -2962,7 +2962,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "542a5b8a-13ed-481b-a693-037c705ade3f")
+		(uuid "d04021fa-16d6-4cf5-a5cc-e27eb0c7f2bf")
 	)
 	(wire
 		(pts
@@ -2972,7 +2972,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "db283471-3022-42cd-86f8-c4ed3cdf736e")
+		(uuid "6146b8cf-0406-4dc1-beae-fb5724e71e6a")
 	)
 	(wire
 		(pts
@@ -2982,7 +2982,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7102a635-2b5c-49e8-8c64-5ba28249ff21")
+		(uuid "47c4bfcd-505f-4d89-ac87-56b5ba7f8fcc")
 	)
 	(wire
 		(pts
@@ -2992,7 +2992,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ff117b54-7bb8-4525-b074-b728bbacff35")
+		(uuid "5ada6ce2-311c-45cc-a6ec-180c0c18263d")
 	)
 	(wire
 		(pts
@@ -3002,7 +3002,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b1f270f6-fac2-4337-b99f-4c1f00842c3d")
+		(uuid "a8a853a8-e683-4b0a-844a-b30d8acce7ad")
 	)
 	(wire
 		(pts
@@ -3012,7 +3012,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b181b7cf-2845-441b-beca-dc56d111e8b5")
+		(uuid "dce60d2a-5077-4345-bd95-3a7e4d36af13")
 	)
 	(wire
 		(pts
@@ -3022,7 +3022,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "96fda10d-289a-467c-bbfb-1fd80218bb2a")
+		(uuid "ee46812e-5ffc-4c57-9e16-408031780e71")
 	)
 	(wire
 		(pts
@@ -3032,7 +3032,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "503bc94a-ba7b-4915-8660-da015c92ed64")
+		(uuid "e3048446-baf1-447d-86e9-34c1fe3e4db8")
 	)
 	(wire
 		(pts
@@ -3042,7 +3042,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "998fba5b-3aae-4f40-b0e3-97ecb94133b7")
+		(uuid "023e7807-6310-4b8c-ad2f-60a12bb7b1bc")
 	)
 	(wire
 		(pts
@@ -3052,7 +3052,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "502f7f6b-9e31-4062-beae-4f7a2bbfac00")
+		(uuid "09862fb2-2464-4645-868e-be0c28ca1532")
 	)
 	(wire
 		(pts
@@ -3062,7 +3062,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ba6af7fa-6b6d-4061-987d-314753968742")
+		(uuid "38c4acba-53b8-4b84-a10d-acb90105e98a")
 	)
 	(wire
 		(pts
@@ -3072,7 +3072,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cd44a384-a028-417b-aa77-44664c739a59")
+		(uuid "c2ddf21d-788e-4922-99a0-ab770c883c45")
 	)
 	(wire
 		(pts
@@ -3082,7 +3082,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a8ff94f7-35cd-49dd-a0bd-954a74ebcbf8")
+		(uuid "913747aa-041d-47c4-85dd-b0703e20e7e7")
 	)
 	(wire
 		(pts
@@ -3092,7 +3092,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7787887b-a0d1-4f02-a980-3a51093b516f")
+		(uuid "ae80dbee-b157-4ae6-8a46-dbb13ecc9560")
 	)
 	(wire
 		(pts
@@ -3102,7 +3102,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a2827312-aab6-4b42-a76d-5bc925fb0404")
+		(uuid "3ecc3e79-d013-4ccf-9ac4-bbde9f9c75d7")
 	)
 	(wire
 		(pts
@@ -3112,7 +3112,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a1d8cc70-7251-4b19-b9ff-c79512f06503")
+		(uuid "9f9b6b4e-a2f5-409b-a69f-af52899f018e")
 	)
 	(wire
 		(pts
@@ -3122,7 +3122,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2e8b6019-6dc7-4516-8cee-84c68f044997")
+		(uuid "1e1eaca8-fc27-4606-be8f-5addf8ce319a")
 	)
 	(wire
 		(pts
@@ -3132,7 +3132,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ac5666e4-02e5-49f3-92af-fb496d4ff4de")
+		(uuid "1a90336d-5c8e-4304-8632-c7f890fdea64")
 	)
 	(wire
 		(pts
@@ -3142,7 +3142,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "76fb0643-84e0-42b3-aeb9-e55d1e6ad17e")
+		(uuid "5abfe662-2247-47ee-97cd-b6203ce32da3")
 	)
 	(wire
 		(pts
@@ -3152,7 +3152,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7715ce70-2188-4ae0-8b5b-112e48210130")
+		(uuid "fdf5eba2-9aaf-4862-a761-701924d8d036")
 	)
 	(wire
 		(pts
@@ -3162,7 +3162,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "066dc042-2153-476e-b16d-8bd649ff4738")
+		(uuid "5dcc2f52-40e9-47c8-9d51-6fc75da5535b")
 	)
 	(wire
 		(pts
@@ -3172,7 +3172,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "62d05548-15ef-4a7f-b630-ae825f2626a9")
+		(uuid "4581b45a-5109-4cd2-89b2-ed721cd21952")
 	)
 	(wire
 		(pts
@@ -3182,7 +3182,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f2b86d68-23ee-486d-bc3c-8de22a8d6f42")
+		(uuid "455f7eef-d034-4ca0-8e8d-86119349f632")
 	)
 	(wire
 		(pts
@@ -3192,7 +3192,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3593bc3e-cce4-477f-a94e-4562b5205443")
+		(uuid "a01a7ca3-53b8-4fa7-8108-5065c65a631d")
 	)
 	(wire
 		(pts
@@ -3202,7 +3202,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "db704efc-7ac9-45b8-9839-09aa5939a583")
+		(uuid "7b622521-6296-4889-91a6-854dc8fa1360")
 	)
 	(wire
 		(pts
@@ -3212,7 +3212,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "174ac1e0-c7bd-474b-be05-f02faf721e4f")
+		(uuid "62d8756b-8f5f-4fe8-8f1e-e6452229db62")
 	)
 	(wire
 		(pts
@@ -3222,7 +3222,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "6232d585-35ff-49b9-bac0-1f9d224c2c9f")
+		(uuid "a6c23d19-7eb0-4c92-a412-1443958cda3f")
 	)
 	(wire
 		(pts
@@ -3232,7 +3232,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ee0cf8e3-6bcb-4a66-9f62-74b6ab7c2117")
+		(uuid "01c7fa12-102a-44c3-acee-23731d65d26e")
 	)
 	(wire
 		(pts
@@ -3242,7 +3242,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "db496193-5df9-48fe-b004-4ce35f0b154e")
+		(uuid "dadff88a-6ade-4216-9c06-0eb4a2cca0b7")
 	)
 	(wire
 		(pts
@@ -3252,7 +3252,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "024ef9e9-4837-49fa-a5d7-db65de536213")
+		(uuid "3fef3634-28ac-458d-8cc1-e0b9cc8e928e")
 	)
 	(wire
 		(pts
@@ -3262,7 +3262,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3d6e9f6b-21cb-4d7d-8a6d-005961ad4e32")
+		(uuid "d4d3d41d-0a76-457f-aa59-15c693f57fe8")
 	)
 	(wire
 		(pts
@@ -3272,7 +3272,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "af6459ff-382a-4694-a28b-3c9b077f8162")
+		(uuid "8ef7b0bb-63af-4216-baa4-7d8bff907941")
 	)
 	(wire
 		(pts
@@ -3282,7 +3282,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "050597b2-d327-46fe-99cc-ce30d87af42a")
+		(uuid "1e5b528c-cca5-4474-979f-3bcd04bf271c")
 	)
 	(wire
 		(pts
@@ -3292,7 +3292,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f2668d18-c865-4581-90dd-1b3c992a9c76")
+		(uuid "0be14aab-2504-47f5-9083-6ab696505cc0")
 	)
 	(wire
 		(pts
@@ -3302,7 +3302,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "a6c48809-f732-49c3-831b-3c78a53eadfe")
+		(uuid "0d2ca315-cc79-40bd-b700-8cb0b7c4a27e")
 	)
 	(wire
 		(pts
@@ -3312,7 +3312,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "888a7ad8-f95e-4cf3-8665-f1c004b36e60")
+		(uuid "d3d73a53-3cd7-4456-95f2-100c0ba3e52f")
 	)
 	(wire
 		(pts
@@ -3322,7 +3322,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b9f3e07e-9707-46f2-b5fd-47c6a74b59b8")
+		(uuid "b025559d-217e-41ab-9b0e-30ac33c7af68")
 	)
 	(wire
 		(pts
@@ -3332,7 +3332,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "74547d6e-7e06-4582-9d31-5964d1799f00")
+		(uuid "0792713d-18ad-4ea9-9266-51baa7c74a70")
 	)
 	(wire
 		(pts
@@ -3342,7 +3342,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "694de652-38aa-4fcc-aa90-55eb709cc4b2")
+		(uuid "e8be844b-34b3-48dd-b77b-6fdf6b48c378")
 	)
 	(wire
 		(pts
@@ -3352,7 +3352,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "66de85b0-0733-4fda-9eca-92b824fa653b")
+		(uuid "fd5891da-6600-4090-99cf-2075f006a7a8")
 	)
 	(wire
 		(pts
@@ -3362,7 +3362,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ec9df7d9-fa2a-4d1a-b834-076eecdf5c9e")
+		(uuid "3e1c8ebc-9a40-4006-ad14-c0ed75e73e4f")
 	)
 	(wire
 		(pts
@@ -3372,7 +3372,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2472a513-5b58-4a82-bdc0-53759dbcab37")
+		(uuid "f6a115f9-4ffb-4c49-8576-dfaac88607b0")
 	)
 	(wire
 		(pts
@@ -3382,7 +3382,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "f5c64f1e-71ec-4ac2-943e-250e5af89c5a")
+		(uuid "7268d730-4f6a-4766-9564-910647f0b533")
 	)
 	(wire
 		(pts
@@ -3392,7 +3392,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2710b8b9-654f-451c-808c-1668da6696be")
+		(uuid "3059d3cb-15dd-4da9-b285-f087192ef052")
 	)
 	(wire
 		(pts
@@ -3402,7 +3402,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cbc69518-29fc-4451-8f2c-d2bc31923071")
+		(uuid "768a787a-e75b-4782-9710-2920f8f57052")
 	)
 	(wire
 		(pts
@@ -3412,7 +3412,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ed4d9e2f-e7fb-4c86-95f7-3e62dc40fefd")
+		(uuid "28ee5cba-8c61-4e1f-b430-a0995ac742b0")
 	)
 	(wire
 		(pts
@@ -3422,7 +3422,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8e76f059-1ea7-4eea-8201-c122eeab7122")
+		(uuid "13842c3f-94c0-4492-8722-252b553ddeeb")
 	)
 	(wire
 		(pts
@@ -3432,7 +3432,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "aac0ab6a-cd38-47dc-bdd2-7eaa31bf01d1")
+		(uuid "6123551f-1f66-4887-8373-2dd94ec53e1b")
 	)
 	(wire
 		(pts
@@ -3442,7 +3442,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "5597bb8b-b86c-4de8-9741-289d9acf47fc")
+		(uuid "38e0df43-51a8-4db1-bd48-f00d680923d9")
 	)
 	(wire
 		(pts
@@ -3452,7 +3452,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "cbfe9dbe-f91d-4c12-b06e-313ead494c2f")
+		(uuid "38bb1248-fa0c-4c9c-809b-d70ddaeeb6f4")
 	)
 	(wire
 		(pts
@@ -3462,7 +3462,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "9f099ff2-89c8-424a-99a0-66fa61f00f04")
+		(uuid "63b28c18-4b1e-4b33-90d8-5f77ad6b78cd")
 	)
 	(wire
 		(pts
@@ -3472,7 +3472,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d7f0cde9-7f30-41a5-bd50-a6f492331a0e")
+		(uuid "129d90cb-43e8-4f69-b00c-a93d2cf6b739")
 	)
 	(wire
 		(pts
@@ -3482,7 +3482,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "54b2866e-abdd-4995-adfa-ceae868f2bff")
+		(uuid "52d40306-d1d6-4805-aa8c-48fc5fc9f375")
 	)
 	(wire
 		(pts
@@ -3492,7 +3492,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "03280241-5798-460b-a8e7-0bb3b016c388")
+		(uuid "d8bd2677-e1f9-4b95-953d-418c49610bb1")
 	)
 	(wire
 		(pts
@@ -3502,7 +3502,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "79604ef9-6193-4e2f-9ff9-98c0378ea4c6")
+		(uuid "5919e6dc-9e55-449e-a72c-2e37dfdcefad")
 	)
 	(wire
 		(pts
@@ -3512,7 +3512,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1a2e7273-483f-43d7-a188-a4968599ee54")
+		(uuid "7f98a73b-fb20-4e91-b1d3-bc944af260cd")
 	)
 	(wire
 		(pts
@@ -3522,7 +3522,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7cdb91a3-0ee6-4fbc-9d48-d748a023cd56")
+		(uuid "5710ba02-fc54-497c-9f0a-9d850dcf0bfb")
 	)
 	(wire
 		(pts
@@ -3532,7 +3532,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "068d5eb0-7953-480e-95b6-a19a13702777")
+		(uuid "2aa28b5c-3c9b-4dd8-b6f8-3a297318f61f")
 	)
 	(wire
 		(pts
@@ -3542,7 +3542,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0df60bf8-863c-4b80-9148-0e622def66bd")
+		(uuid "48bba18a-c734-4c9a-9ff7-36c2eac016f5")
 	)
 	(wire
 		(pts
@@ -3552,7 +3552,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "56166412-7632-49af-bfbf-b669404b6a30")
+		(uuid "efbf0606-ff76-41f5-a092-78a75ad54a01")
 	)
 	(wire
 		(pts
@@ -3562,7 +3562,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "009b1c6e-465c-462f-b23c-0ff4f0a136ec")
+		(uuid "b5d689fc-8085-4c5b-8663-7f2a4495f445")
 	)
 	(wire
 		(pts
@@ -3572,7 +3572,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7b306e76-180b-408d-aeb4-c5a3b3717c21")
+		(uuid "b792a50e-42b3-4ba1-a35d-b497d3c6694a")
 	)
 	(wire
 		(pts
@@ -3582,7 +3582,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "04eef956-7529-4ee0-9eb0-c4eed95d288b")
+		(uuid "d8427c5c-0502-49ca-8eae-157945af61cc")
 	)
 	(wire
 		(pts
@@ -3592,7 +3592,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b22d27d3-ef2b-4c59-a7fa-f0fa62ce140c")
+		(uuid "aab65003-53ee-466e-b5fe-259c597459db")
 	)
 	(wire
 		(pts
@@ -3602,7 +3602,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "7286e28e-aa67-42ac-8dc9-37615d34e660")
+		(uuid "f1db0a3b-2a55-4186-a573-d6be00840d16")
 	)
 	(wire
 		(pts
@@ -3612,7 +3612,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "136cce9f-380b-434d-829b-493269815fdb")
+		(uuid "fa60053f-feae-4c8d-820f-3dba64f7efae")
 	)
 	(wire
 		(pts
@@ -3622,7 +3622,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d4f49d73-48ea-4566-a636-d2af70f84bf7")
+		(uuid "17e89e9e-4812-4ac1-8c04-2391265f4b70")
 	)
 	(wire
 		(pts
@@ -3632,7 +3632,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "63cf7a03-a78a-46b5-831c-24b1edf37890")
+		(uuid "c45ae0bf-0f6d-4e6d-b5ff-2524c0d52219")
 	)
 	(wire
 		(pts
@@ -3642,7 +3642,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ca5ea9f0-37a0-47dd-a6c8-00caef585310")
+		(uuid "4c7fed15-df92-4fca-9a07-c377f594d729")
 	)
 	(wire
 		(pts
@@ -3652,7 +3652,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ed96f236-1d43-4082-b5ed-fd880f7c2f41")
+		(uuid "74277e4e-b704-436a-bf33-dd5a840ffa20")
 	)
 	(wire
 		(pts
@@ -3662,7 +3662,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "12ab2437-5682-4b65-b17c-9219c0a64b8b")
+		(uuid "5ad4e5c3-b579-4db1-8f23-30ad100a06db")
 	)
 	(wire
 		(pts
@@ -3672,7 +3672,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "caa1f340-f0a8-4af7-9bc0-c05ac7b10e48")
+		(uuid "cb4e00e4-39c0-4f1e-94b5-e073daf5ab51")
 	)
 	(wire
 		(pts
@@ -3682,7 +3682,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "daff639a-f4bb-4b49-8913-448e614adee3")
+		(uuid "e34a4253-0cb7-4713-8416-acca1f3237a9")
 	)
 	(wire
 		(pts
@@ -3692,7 +3692,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "17af16bb-8536-424f-9835-ddebd3e6e566")
+		(uuid "bfe6533a-00c3-4fd5-874a-37be29b4fe82")
 	)
 	(wire
 		(pts
@@ -3702,7 +3702,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "90dab585-5ae9-40e8-90da-ab21310c8c32")
+		(uuid "bb6eb818-86d2-4408-9f2c-72a8e7823df3")
 	)
 	(wire
 		(pts
@@ -3712,7 +3712,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "da6bcc03-099f-4def-ab59-efd244ef0f1b")
+		(uuid "d9aa0b46-c6c3-41fd-9160-2e144bd26a4e")
 	)
 	(wire
 		(pts
@@ -3722,7 +3722,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fb773808-3720-45e8-a9db-e54c6b07f4a3")
+		(uuid "8c411107-4b12-4e09-b2aa-065c9c71f38a")
 	)
 	(wire
 		(pts
@@ -3732,9 +3732,9 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "44d176a6-ea23-4d6d-a7ba-8bb2c899b612")
+		(uuid "ac2d1eab-4e02-4d0f-8e2c-3809aed06bfe")
 	)
-	(text "Design notes (CN3791 datasheet, Figure 1):\n- Solar inputs J1-J4: up to four 5V panels in parallel, each isolated by a 1N5819 (40V/1A). MPPT senses VIN after these diodes,\n  so each panel sits ~0.3-0.45V above the 4.6V setpoint (~4.9-5.0V, typical Vmp of a 5V panel). One panel alone carries ~0.9A at 1A charge.\n- Charge current: ICH = 120mV / R5 = 120mV / 0.12R = 1.0A (R5 = 0.24R for 0.5A).\n- MPPT setpoint: VMPPT = 1.205V x (1 + R3/R4) = 1.205 x (1 + 28.0k/10k) = 4.58V. Charging starts once MPPT > 1.23V (VIN > 4.68V).\n- L1: datasheet requires L > 5 x (VCC - VBAT) uH = 16uH at 6V Voc / 2.8V batt. 22uH gives ~0.2A ripple at 6V in, 3.7V batt.\n- Datasheet blocking diode D1 omitted to save ~0.4V headroom: D5-D8 keep the battery out of the panels; the CN3791 then draws ~21uA\n  from the battery via L1 and Q1's body diode when dark (datasheet p.9). Reference D1 is intentionally unused.\n- Status: D4 red ON = charging, D3 green ON = charge done. Both off = no input or VIN < VBAT.\n- Panel-mount SPST switches plug into J7/J8 (JST-XH, 3A; PH is used for panels/battery so leads can't be swapped).\n  J7 SW_BATT isolates the cell from charger and load. J8 SW_LOAD switches only VOUT (J6), so the cell keeps charging with it off.\n  Rate both switches >= 1A or the module's peak current, whichever is higher (battery current is charge OR load, not the sum).\n  With SW_BATT off in sun the CN3791 sees no battery and VBAT pulses near 4.2V: keep SW_LOAD off then.\n- INA219 (U2, I2C 0x40 with A0=A1=GND). SW3 selects the shunt: SOLAR = R7 (PV -> VIN), current from the panels, bus voltage = VIN;\n  BATT = R6 (BATT+ -> cell), + charging / - discharging, bus voltage = cell voltage (readable even with SW_BATT open).\n  Shunts 0.1R match the common INA219 breakout, so stock library calibration (32V/2A, PGA /8 = +/-320mV = +/-3.2A) works as-is.\n  J9 to MCU: 1 VCC_MCU (3.3-5V, powers U2 and pull-ups), 2 SDA, 3 SCL, 4 GND. R8/R9 10k pull-ups: omit if the MCU board has them."
+	(text "Design notes (CN3791 datasheet, Figure 1):\n- Solar inputs J1-J4: up to four 5V panels in parallel, each isolated by a 1N5819WS (SOD-323, 40V/1A). MPPT senses VIN after these diodes,\n  so each panel sits ~0.3-0.45V above the 4.6V setpoint (~4.9-5.0V, typical Vmp of a 5V panel). Panels peak at ~200-300mA each.\n- Charge current: ICH = 120mV / R5 = 120mV / 0.15R = 0.8A, leaving margin on the 1.0A connector contacts (R5 = 0.24R for 0.5A).\n- MPPT setpoint: VMPPT = 1.205V x (1 + R3/R4) = 1.205 x (1 + 28.0k/10k) = 4.58V. Charging starts once MPPT > 1.23V (VIN > 4.68V).\n- L1: datasheet requires L > 5 x (VCC - VBAT) uH = 16uH at 6V Voc / 2.8V batt. 22uH gives ~0.2A ripple at 6V in, 3.7V batt.\n- Datasheet blocking diode D1 omitted to save ~0.4V headroom: D5-D8 keep the battery out of the panels; the CN3791 then draws ~21uA\n  from the battery via L1 and Q1's body diode when dark (datasheet p.9). Reference D1 is intentionally unused.\n- Status: D4 red ON = charging, D3 green ON = charge done. Both off = no input or VIN < VBAT.\n- All power connectors (J1-J8) are 2-pin Micro JST 1.25 / PicoBlade-compatible (1.0A per contact); J9 I2C is the 4-pin version.\n  Panel-mount SPST switches plug into J7/J8. Same connector family everywhere, so check the silkscreen before plugging in.\n  J7 SW_BATT isolates the cell from charger and load. J8 SW_LOAD switches only VOUT (J6), so the cell keeps charging with it off.\n  Rate both switches >= 1A or the module's peak current, whichever is higher (battery current is charge OR load, not the sum).\n  With SW_BATT off in sun the CN3791 sees no battery and VBAT pulses near 4.2V: keep SW_LOAD off then.\n- INA219 (U2, I2C 0x40 with A0=A1=GND). SW3 selects the shunt: SOLAR = R7 (PV -> VIN), current from the panels, bus voltage = VIN;\n  BATT = R6 (BATT+ -> cell), + charging / - discharging, bus voltage = cell voltage (readable even with SW_BATT open).\n  Shunts 0.1R match the common INA219 breakout, so stock library calibration (32V/2A, PGA /8 = +/-320mV = +/-3.2A) works as-is.\n  J9 to MCU: 1 VCC_MCU (3.3-5V, powers U2 and pull-ups), 2 SDA, 3 SCL, 4 GND. R8/R9 10k pull-ups: omit if the MCU board has them."
 		(exclude_from_sim no)
 		(at 40.64 157.48 0)
 		(effects
@@ -3743,7 +3743,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "26e8e275-3389-4864-88e6-16f608c686e1")
+		(uuid "72a4e0cf-cb41-488c-91f5-043a6aaeb08d")
 	)
 	(label "PV"
 		(at 50.8 60.96 0)
@@ -3753,7 +3753,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "0dc9bb0d-a37f-48d2-95fd-8c190590cf4f")
+		(uuid "abd33cec-903a-4a86-b1e3-cc94aca923ea")
 	)
 	(label "MPPT"
 		(at 111.76 58.42 0)
@@ -3763,7 +3763,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "0a80cc78-10fc-4380-8243-e99dd7ade9a7")
+		(uuid "7c7894f2-795b-46bf-8e29-8d06e80d8f5d")
 	)
 	(label "VIN"
 		(at 109.22 50.8 0)
@@ -3773,7 +3773,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "8033d491-9fb5-4b69-945f-719376d3f78f")
+		(uuid "11035536-0b58-4c6b-8ae7-a704cef33bf1")
 	)
 	(label "DRV"
 		(at 121.92 40.64 90)
@@ -3783,7 +3783,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "178fb17d-3de2-43b8-a936-cc58eae4ba2e")
+		(uuid "2d6d09a9-0c68-4a78-9387-2579e5567a49")
 	)
 	(label "CSP"
 		(at 167.64 45.72 90)
@@ -3793,7 +3793,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "d4e95445-bda5-4751-8873-b0961e1316b9")
+		(uuid "4a8cc298-3a56-4f00-a360-fa46f911630e")
 	)
 	(label "VBAT"
 		(at 185.42 45.72 90)
@@ -3803,7 +3803,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "9d77b287-7b45-4386-9068-fe07076782ae")
+		(uuid "6cca1501-cb17-416e-8e79-de85b25037cd")
 	)
 	(label "BATT+"
 		(at 215.9 53.34 180)
@@ -3813,7 +3813,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "97e463a4-7a58-4dbc-acfb-f6238e1fb6cc")
+		(uuid "3a8e4d08-faac-448f-b317-642d487f0ed9")
 	)
 	(label "BATT+"
 		(at 198.12 68.58 180)
@@ -3823,7 +3823,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "026aebb1-e937-4c35-b393-ede4502ed951")
+		(uuid "d2b45a14-9c8b-4d19-a585-2710f79ba397")
 	)
 	(label "BAT_CELL"
 		(at 213.36 63.5 90)
@@ -3833,7 +3833,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "a162025f-7d8c-46b1-983d-a1e82ff69001")
+		(uuid "31b9fd17-e60d-4e8a-86a1-46a8965e7969")
 	)
 	(label "VBAT"
 		(at 215.9 86.36 180)
@@ -3843,7 +3843,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "0089d90c-4aad-4873-8c4f-14187a360d64")
+		(uuid "d28086f9-4c28-486e-974c-6739c3f3e1f2")
 	)
 	(label "VOUT"
 		(at 215.9 88.9 180)
@@ -3853,7 +3853,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "1c4d92b5-a2e5-4072-b206-b7f42c9a2aec")
+		(uuid "4051006e-1853-4588-a5a8-d46d3343920e")
 	)
 	(label "VOUT"
 		(at 241.3 86.36 180)
@@ -3863,7 +3863,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "95a0410a-d1fa-4fe8-8dd8-8dd998742883")
+		(uuid "1a4be4ce-0ee5-4cb5-9e7f-b84049dd4fd6")
 	)
 	(label "PV"
 		(at 264.16 99.06 180)
@@ -3873,7 +3873,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "f483fef8-a2dc-4806-a08b-faa1ca5d615b")
+		(uuid "d3caf0c3-57e8-4355-84b4-ed89f732bad7")
 	)
 	(label "SENSE+"
 		(at 264.16 104.14 180)
@@ -3883,7 +3883,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "4ecb960a-0662-40eb-897a-328a6198694f")
+		(uuid "a16af86c-c044-4e66-af45-ce825df53397")
 	)
 	(label "BATT+"
 		(at 264.16 109.22 180)
@@ -3893,7 +3893,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "278cca27-f733-4eb6-9e95-dbbccdea4424")
+		(uuid "e680d94c-a9ff-4f72-8761-c30fa149c026")
 	)
 	(label "VIN"
 		(at 284.48 99.06 0)
@@ -3903,7 +3903,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "2b4a3eb1-6824-4028-846a-99a3dbdbe3ff")
+		(uuid "036755c3-731a-4701-a0cc-6d0c2fcca134")
 	)
 	(label "SENSE-"
 		(at 284.48 104.14 0)
@@ -3913,7 +3913,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "052ca2e2-a3ca-4032-a2dd-e88f4e35e130")
+		(uuid "1cfcdcfe-3351-4601-bc9f-28c1fdc923af")
 	)
 	(label "BAT_CELL"
 		(at 284.48 109.22 0)
@@ -3923,7 +3923,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b46db625-88db-47d3-8baa-e3329b69b493")
+		(uuid "f6323b2b-8d4a-468f-8127-657bf7362a1f")
 	)
 	(label "SENSE+"
 		(at 307.34 101.6 180)
@@ -3933,7 +3933,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "e8620a8f-a93f-43f3-966e-5c2cdce1e6df")
+		(uuid "917afc80-6e67-4790-b453-46150ad9363b")
 	)
 	(label "SENSE-"
 		(at 307.34 106.68 180)
@@ -3943,7 +3943,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "2a27511f-aaed-4902-8646-4db0196c9e31")
+		(uuid "9523f6d2-4e83-4a44-af3b-434600e9f914")
 	)
 	(label "VCC_MCU"
 		(at 322.58 88.9 90)
@@ -3953,7 +3953,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "51786b3f-df9c-4807-aafe-b4d904540863")
+		(uuid "87f74f9d-9136-4785-86c1-ee7e2c2d87a1")
 	)
 	(label "SDA"
 		(at 337.82 99.06 0)
@@ -3963,7 +3963,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c4b8b979-3a70-443b-b132-88731568dfe9")
+		(uuid "37d784ff-6e9f-4f41-9f03-838a993de678")
 	)
 	(label "SCL"
 		(at 337.82 101.6 0)
@@ -3973,7 +3973,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "5b5368a6-1424-43c0-bc20-361bc87c8966")
+		(uuid "1726e548-3d7d-4450-8c3e-356bb849d934")
 	)
 	(label "VCC_MCU"
 		(at 345.44 88.9 90)
@@ -3983,7 +3983,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "ac511f48-719a-4255-880d-db1174ba01d5")
+		(uuid "38e422fb-27ac-44b5-bcfa-6df9a0bcd378")
 	)
 	(label "VCC_MCU"
 		(at 355.6 92.71 90)
@@ -3993,7 +3993,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "13d070f7-553c-4c71-b965-9046cb1a8455")
+		(uuid "9fe7ade9-7a39-4602-a844-eca4c1700ee6")
 	)
 	(label "SDA"
 		(at 355.6 105.41 270)
@@ -4003,7 +4003,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "ebd98b7c-fbc2-44cf-a3cf-27e7c141e5d0")
+		(uuid "31adbb0e-fdbd-41fb-b30b-a854ece5367e")
 	)
 	(label "VCC_MCU"
 		(at 365.76 92.71 90)
@@ -4013,7 +4013,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "3b654f57-4885-4cb9-bb3b-85b93a0a49fd")
+		(uuid "a5484c74-dedc-409a-9a41-8967c2322d43")
 	)
 	(label "SCL"
 		(at 365.76 105.41 270)
@@ -4023,7 +4023,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "9d6ce76b-4480-46de-868a-93106c61197b")
+		(uuid "b7a8a24d-4567-448d-9e62-17ba7daaf6f3")
 	)
 	(label "VCC_MCU"
 		(at 383.54 99.06 180)
@@ -4033,7 +4033,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "13942e3d-407b-4231-9540-795f996e1634")
+		(uuid "10e4799a-8597-4d40-9d96-c5bbd1ed45f7")
 	)
 	(label "SDA"
 		(at 383.54 101.6 180)
@@ -4043,7 +4043,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "b19bd7b7-e779-4df7-a46a-44e184b143a5")
+		(uuid "43e9ea4e-5e3c-44cf-9a8c-4a3aaa502bde")
 	)
 	(label "SCL"
 		(at 383.54 104.14 180)
@@ -4053,7 +4053,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "0fa9e56c-dbba-4e0f-83aa-b78ea962fa76")
+		(uuid "0a5d4db4-a31e-44fc-abee-fc9c49c82723")
 	)
 	(label "VCC_MCU"
 		(at 375.92 86.36 0)
@@ -4063,7 +4063,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c6a3ebf1-34e9-475a-a9d9-5d77905a6198")
+		(uuid "a7625621-f4a1-45ed-b706-a2cebf44e399")
 	)
 	(label "VIN"
 		(at 99.06 86.36 180)
@@ -4073,7 +4073,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "e3373460-7c81-4b14-a93d-b22e5d7e126d")
+		(uuid "b94fda01-7f61-41df-bbdb-c345f57c3587")
 	)
 	(label "MPPT"
 		(at 99.06 91.44 180)
@@ -4083,7 +4083,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "be09ce8d-92ac-4631-961c-1f51bacdbe03")
+		(uuid "6206fe88-7fd2-4e6d-8bba-a1e377b2d760")
 	)
 	(label "~{CHRG}"
 		(at 99.06 96.52 180)
@@ -4093,7 +4093,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "980ec17d-78a1-4ec2-98ae-14cfd2070502")
+		(uuid "54045c4a-55e0-4dd5-b7ce-4edbf15e461d")
 	)
 	(label "~{DONE}"
 		(at 99.06 99.06 180)
@@ -4103,7 +4103,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "2fe8ae6d-cc88-45d0-8a1e-1bb3cda09394")
+		(uuid "b0e322b2-3691-429b-824c-ed48cc883563")
 	)
 	(label "DRV"
 		(at 127 88.9 0)
@@ -4113,7 +4113,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "d8548840-d346-480c-a064-ed5aabc3da90")
+		(uuid "1f3df773-42a5-4d50-af8a-a0046957bcdc")
 	)
 	(label "CSP"
 		(at 129.54 93.98 0)
@@ -4123,7 +4123,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "854ae10b-6b14-4b0c-8b46-8c86ba962636")
+		(uuid "e32343e4-0bd6-4a81-bfc8-e134f31c508e")
 	)
 	(label "VBAT"
 		(at 129.54 96.52 0)
@@ -4133,7 +4133,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "57eeac9a-8081-48f4-9429-0302f73cc923")
+		(uuid "ae9013da-a281-4d5a-ab42-4a38ff20cf50")
 	)
 	(label "VIN"
 		(at 127 76.2 90)
@@ -4143,7 +4143,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f19811d1-ddc7-45a9-b801-9d158acf20c7")
+		(uuid "3de6584a-53fe-45ff-88af-48d10bd00777")
 	)
 	(label "VIN"
 		(at 160.02 82.55 90)
@@ -4153,7 +4153,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "b533b6e2-c1ed-4d30-80ce-1fdb4475e6b3")
+		(uuid "c7528c16-809b-4a93-a3f9-9be1b4b58d31")
 	)
 	(label "~{CHRG}"
 		(at 160.02 102.87 270)
@@ -4163,7 +4163,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "55e14c84-1044-4864-b07b-59f2c06b3960")
+		(uuid "e64ab6cf-4625-46f4-8f4b-03aa7386aa81")
 	)
 	(label "~{DONE}"
 		(at 172.72 102.87 270)
@@ -4173,7 +4173,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "7890100b-fc0d-418d-a24b-7b0b7dab8a9e")
+		(uuid "d455913c-fa0a-4a78-9d36-43707b6c08f8")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
@@ -4184,7 +4184,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "30bb8270-a5b4-4f80-a9ad-5e37a39b17da")
+		(uuid "7f8d8a21-8580-46aa-978d-d2ae99aab704")
 		(property "Reference" "J1"
 			(at 25.4 57.15 0)
 			(effects
@@ -4201,7 +4201,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical"
 			(at 25.4 60.96 0)
 			(hide yes)
 			(effects
@@ -4229,10 +4229,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "22c392c0-72bd-4d6e-b9d3-030ecd1248a7")
+			(uuid "936bfd3e-38a2-4d3b-95eb-d6bdc1482de7")
 		)
 		(pin "2"
-			(uuid "1466e32c-2d7e-4b1f-b226-0b8fdab43c53")
+			(uuid "f45571ca-9198-4615-93bc-005c373c084d")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4244,14 +4244,14 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:1N5819")
+		(lib_id "Diode:1N5819WS")
 		(at 39.37 60.96 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a41fbc68-b2b8-4f37-a0b5-01ae7c842f3a")
+		(uuid "d2571b49-c3e7-42c0-8f0b-8a77ae404da8")
 		(property "Reference" "D5"
 			(at 39.37 57.15 0)
 			(effects
@@ -4260,7 +4260,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819"
+		(property "Value" "1N5819WS"
 			(at 39.37 64.77 0)
 			(effects
 				(font
@@ -4268,7 +4268,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 39.37 60.96 0)
 			(hide yes)
 			(effects
@@ -4277,7 +4277,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.vishay.com/docs/88525/1n5817.pdf"
+		(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf"
 			(at 39.37 60.96 0)
 			(hide yes)
 			(effects
@@ -4286,7 +4286,7 @@
 				)
 			)
 		)
-		(property "Description" "40V 1A Schottky Barrier Rectifier Diode, DO-41"
+		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
 			(at 39.37 60.96 0)
 			(hide yes)
 			(effects
@@ -4296,10 +4296,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "4c87e270-83d5-442c-810a-b8d187d182fa")
+			(uuid "fd3e60c1-d967-458a-b9eb-84e03f6e3bf2")
 		)
 		(pin "2"
-			(uuid "d20b1494-de44-4ae3-a326-d2be0859cba2")
+			(uuid "cc0ff32e-c604-4a23-88ee-a316e72b932e")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4318,7 +4318,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "4704830c-fb88-42be-9af6-e493f3f8643f")
+		(uuid "63411b71-584a-4743-bdbd-f4070f0e2c40")
 		(property "Reference" "#PWR001"
 			(at 33.02 66.04 0)
 			(hide yes)
@@ -4364,7 +4364,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "d8896bcb-e8c1-4847-9a7f-5d571c67c1c8")
+			(uuid "61b68a0a-fc93-4e82-9636-bf30f10b22bb")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4384,7 +4384,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b970ed28-6ed5-4a65-8070-51615f72daa5")
+		(uuid "cf8d1b70-521a-41bf-a5ac-b5f594ac0819")
 		(property "Reference" "J2"
 			(at 25.4 69.85 0)
 			(effects
@@ -4401,7 +4401,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical"
 			(at 25.4 73.66 0)
 			(hide yes)
 			(effects
@@ -4429,10 +4429,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "3944fcea-cc7a-4126-bd75-82e2523bfeb1")
+			(uuid "44d02b67-5b41-4964-be3c-e7e3f18a3c6e")
 		)
 		(pin "2"
-			(uuid "3eb97339-9e80-456f-9860-de4cb0418c3b")
+			(uuid "ced23bd2-d68c-4836-8146-00119bbb1c66")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4444,14 +4444,14 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:1N5819")
+		(lib_id "Diode:1N5819WS")
 		(at 39.37 73.66 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f3bb2825-1f47-437d-9b11-020ef325b961")
+		(uuid "1d44fc39-4e77-40de-b63e-fb5b7614fdc9")
 		(property "Reference" "D6"
 			(at 39.37 69.85 0)
 			(effects
@@ -4460,7 +4460,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819"
+		(property "Value" "1N5819WS"
 			(at 39.37 77.47 0)
 			(effects
 				(font
@@ -4468,7 +4468,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 39.37 73.66 0)
 			(hide yes)
 			(effects
@@ -4477,7 +4477,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.vishay.com/docs/88525/1n5817.pdf"
+		(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf"
 			(at 39.37 73.66 0)
 			(hide yes)
 			(effects
@@ -4486,7 +4486,7 @@
 				)
 			)
 		)
-		(property "Description" "40V 1A Schottky Barrier Rectifier Diode, DO-41"
+		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
 			(at 39.37 73.66 0)
 			(hide yes)
 			(effects
@@ -4496,10 +4496,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ef0be2ad-583b-4b23-92d7-a91c553365da")
+			(uuid "97fcc775-8742-47df-bf6c-4770c377ffa8")
 		)
 		(pin "2"
-			(uuid "71451299-299d-4348-b286-dbf1c7eccccd")
+			(uuid "9ab3c8ac-6655-49d9-87be-1880e4ac3a27")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4518,7 +4518,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "8bd598e4-aa0c-4ad7-a107-91d37889e163")
+		(uuid "06098bf6-9dee-4b82-bee6-75f4cfdccb40")
 		(property "Reference" "#PWR002"
 			(at 33.02 78.74 0)
 			(hide yes)
@@ -4564,7 +4564,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "bf9d3212-5ff7-468e-b652-7510a7079a28")
+			(uuid "667df8a3-793b-46b3-b17e-792f66528d31")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4584,7 +4584,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "05cfb88b-10e6-4d09-a28d-9f9c9136b598")
+		(uuid "df9d9624-bf11-47f3-afec-38c5891f898b")
 		(property "Reference" "J3"
 			(at 25.4 82.55 0)
 			(effects
@@ -4601,7 +4601,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical"
 			(at 25.4 86.36 0)
 			(hide yes)
 			(effects
@@ -4629,10 +4629,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "5b60d6d7-6e47-460a-9fe9-c2bbf8c83e2d")
+			(uuid "9e4c63f9-3fb5-40ac-b447-0eab0c9641ba")
 		)
 		(pin "2"
-			(uuid "8b0fa7cf-ad2c-42a5-a4bc-101d7df29791")
+			(uuid "9ba9bb34-7010-4d4b-81b6-00efabc2b322")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4644,14 +4644,14 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:1N5819")
+		(lib_id "Diode:1N5819WS")
 		(at 39.37 86.36 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "362a355c-883d-4389-bccf-94c97fb5e201")
+		(uuid "83ef407e-2a71-4d95-87fd-f39230884bb2")
 		(property "Reference" "D7"
 			(at 39.37 82.55 0)
 			(effects
@@ -4660,7 +4660,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819"
+		(property "Value" "1N5819WS"
 			(at 39.37 90.17 0)
 			(effects
 				(font
@@ -4668,7 +4668,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 39.37 86.36 0)
 			(hide yes)
 			(effects
@@ -4677,7 +4677,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.vishay.com/docs/88525/1n5817.pdf"
+		(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf"
 			(at 39.37 86.36 0)
 			(hide yes)
 			(effects
@@ -4686,7 +4686,7 @@
 				)
 			)
 		)
-		(property "Description" "40V 1A Schottky Barrier Rectifier Diode, DO-41"
+		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
 			(at 39.37 86.36 0)
 			(hide yes)
 			(effects
@@ -4696,10 +4696,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "8af3f24f-79f4-4f88-aa3e-9ed9dccdda21")
+			(uuid "182a6206-3faa-4d9f-abef-ae6f4b338d2d")
 		)
 		(pin "2"
-			(uuid "58b89010-5e59-4ad2-9185-9cd76de9f0f4")
+			(uuid "e42ea567-bc11-4b45-851c-f231a4b80574")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4718,7 +4718,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "fb5f5025-e54c-44a4-8852-7cc391efdfe3")
+		(uuid "484488ae-3e07-4230-88eb-e52d2159215f")
 		(property "Reference" "#PWR003"
 			(at 33.02 91.44 0)
 			(hide yes)
@@ -4764,7 +4764,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "935ad3c6-d2c2-4461-8d89-b7afa445adf3")
+			(uuid "0358b18d-f776-48ca-9eb1-8c447ca80bec")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4784,7 +4784,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "76605ec4-1cb1-404b-81ef-114d7c720f49")
+		(uuid "3c96f539-abd3-417e-96fc-b900d22a7059")
 		(property "Reference" "J4"
 			(at 25.4 95.25 0)
 			(effects
@@ -4801,7 +4801,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical"
 			(at 25.4 99.06 0)
 			(hide yes)
 			(effects
@@ -4829,10 +4829,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "60ba40ee-9aad-4bc7-ac9b-2ce69f7328f7")
+			(uuid "15c3ac02-75b4-4392-ae0a-0b0d8b95bef3")
 		)
 		(pin "2"
-			(uuid "ebda022b-1a8c-4ccf-9bcf-dc0393a5c0cd")
+			(uuid "ff273f88-c0fe-45a7-b651-0d9df5f79004")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4844,14 +4844,14 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:1N5819")
+		(lib_id "Diode:1N5819WS")
 		(at 39.37 99.06 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "7b74113a-b40e-4803-94ba-fa4ee98bdab2")
+		(uuid "1099581a-6422-4fb4-84c5-51e63b67f8f4")
 		(property "Reference" "D8"
 			(at 39.37 95.25 0)
 			(effects
@@ -4860,7 +4860,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819"
+		(property "Value" "1N5819WS"
 			(at 39.37 102.87 0)
 			(effects
 				(font
@@ -4868,7 +4868,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 39.37 99.06 0)
 			(hide yes)
 			(effects
@@ -4877,7 +4877,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.vishay.com/docs/88525/1n5817.pdf"
+		(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf"
 			(at 39.37 99.06 0)
 			(hide yes)
 			(effects
@@ -4886,7 +4886,7 @@
 				)
 			)
 		)
-		(property "Description" "40V 1A Schottky Barrier Rectifier Diode, DO-41"
+		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
 			(at 39.37 99.06 0)
 			(hide yes)
 			(effects
@@ -4896,10 +4896,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "9873b080-ed9e-4684-8c4d-9975d959adab")
+			(uuid "b21c23d5-ea65-477c-9ba3-79423abfa2a7")
 		)
 		(pin "2"
-			(uuid "b15a2f13-85eb-4b5c-ab9b-01da7e2cb0eb")
+			(uuid "589d4cf9-d7c7-408d-b787-6a8ee94eadea")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4918,7 +4918,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "0e44d8b1-f191-48c1-99cd-99e9d8bfa5c1")
+		(uuid "cf1da55a-3e83-4e11-aba7-f6825c7639b1")
 		(property "Reference" "#PWR004"
 			(at 33.02 104.14 0)
 			(hide yes)
@@ -4964,7 +4964,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "43925d71-5ec8-406f-a74b-7e1bd2288fd6")
+			(uuid "ee3dcac1-dd8a-4e6d-b103-43427ee2936c")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -4983,7 +4983,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "42b72d8f-b9b1-496d-8289-79686b31d880")
+		(uuid "2791b0bb-c20c-4c53-a052-6dcdcb547520")
 		(property "Reference" "#FLG001"
 			(at 40.64 38.1 0)
 			(hide yes)
@@ -5030,7 +5030,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "9e096134-31ab-4371-8bca-437cebc18d59")
+			(uuid "97444f05-8fc9-4baf-ab4f-f79487edfcb4")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5049,7 +5049,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "c5bce063-a4b1-4be6-82ff-f7e3bf809903")
+		(uuid "d076bdf6-3462-4d8b-aa14-8a696cf37cf1")
 		(property "Reference" "#PWR005"
 			(at 40.64 40.64 0)
 			(hide yes)
@@ -5095,7 +5095,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "9077eaca-60f3-41d7-b459-660e1ffc5823")
+			(uuid "999a3c8c-101d-470f-b1a2-69c4bcc63002")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5114,7 +5114,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b1d726eb-eaf2-47a5-a9a1-79f9ca3c7e7f")
+		(uuid "cd04fd35-cf71-4628-8ba3-19549071dea2")
 		(property "Reference" "R7"
 			(at 54.61 45.72 270)
 			(effects
@@ -5159,10 +5159,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "551e0f97-f8d3-44e6-9aa3-1fdc60476294")
+			(uuid "abd5eaa2-6e90-43ee-8999-691e80d93120")
 		)
 		(pin "2"
-			(uuid "86463529-8d00-4b30-834e-d44609c0ec7f")
+			(uuid "d7f4e4e6-bbce-4e91-82e7-a6a770496a26")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5181,7 +5181,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "8a8146ae-53b1-4527-a8fe-384905cba31b")
+		(uuid "1c43841d-f7e8-4ee2-a990-eee4d06d498e")
 		(property "Reference" "#FLG002"
 			(at 63.5 50.8 0)
 			(hide yes)
@@ -5228,7 +5228,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "44d1abd7-f287-49ef-ab52-994335934b12")
+			(uuid "245fb83e-c5bb-4377-9d07-06c5c2ad6c0b")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5247,7 +5247,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "910e3cfa-c814-4763-af11-1666de046143")
+		(uuid "fb9ce6a6-f8da-45f4-a7b3-3c5047e00d7c")
 		(property "Reference" "C1"
 			(at 72.47 53.34 0)
 			(effects
@@ -5292,10 +5292,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "6bd20ded-dfd8-497c-ab09-254efa9e16ef")
+			(uuid "855840ec-33ca-4b1f-85df-b9f258c2a48f")
 		)
 		(pin "2"
-			(uuid "c1651afb-1706-4b8b-b19d-f6008cb8dddf")
+			(uuid "460b34fb-37b2-41b7-b9fd-518075b8ad3e")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5314,7 +5314,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "a8792cfc-bbd4-465e-8942-13c7bdba0741")
+		(uuid "5b29d609-34cd-4070-afb8-f1724c70b337")
 		(property "Reference" "#PWR006"
 			(at 68.58 58.42 0)
 			(hide yes)
@@ -5360,7 +5360,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "ca17a29a-d290-4716-83ff-c22250c658b3")
+			(uuid "5659e118-9378-4f74-976a-50b61b04eaf8")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5379,7 +5379,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6658c39f-630f-41a8-bb6a-583a7fae33db")
+		(uuid "2306e480-2dba-432f-bb42-fede7ea4375f")
 		(property "Reference" "C5"
 			(at 87.71 53.34 0)
 			(effects
@@ -5424,10 +5424,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ea1af2c9-8b03-48ac-be8e-9659dc03907d")
+			(uuid "c215dfc8-ec91-46c0-ab16-40c3054af5bc")
 		)
 		(pin "2"
-			(uuid "d5ac3a0d-a76c-4cbc-8d2a-471955f802c9")
+			(uuid "10ff8018-d04b-4fb1-a3d3-c47a6059d85b")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5446,7 +5446,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "99e84898-3cc0-4722-9355-6f633b0191d7")
+		(uuid "a77d47b6-ba24-415c-8172-914fb31a300a")
 		(property "Reference" "#PWR007"
 			(at 83.82 58.42 0)
 			(hide yes)
@@ -5492,7 +5492,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "af1666e5-19c1-406c-b5f7-4d870728c1fc")
+			(uuid "e148d886-4062-41f4-a87e-17062fe81b4e")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5511,7 +5511,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e0736cd5-fc86-41c9-9f8f-9c183bae94b4")
+		(uuid "eebe16a2-b2fe-4b39-9086-8beeab49bfcb")
 		(property "Reference" "R3"
 			(at 102.95 53.34 0)
 			(effects
@@ -5556,10 +5556,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "12c3faf1-a4bd-4d6f-a542-3c380042c8ee")
+			(uuid "4532c353-9693-43e4-8e60-f2e2fbfd0cdb")
 		)
 		(pin "2"
-			(uuid "b61e0f9b-34a4-46e3-a766-3517832bd431")
+			(uuid "47902225-392f-42b5-9921-1896b21072d9")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5578,7 +5578,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f42b5e8c-d32c-41b5-b93c-1ae219d8fbe4")
+		(uuid "b3cf8506-ac23-40f8-95eb-d32fdf72e797")
 		(property "Reference" "R4"
 			(at 102.95 60.96 0)
 			(effects
@@ -5623,10 +5623,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "4aa6c0e4-fd1f-4546-8f76-e21fd9145264")
+			(uuid "98b8fae4-33af-441b-9066-2fba90aff99c")
 		)
 		(pin "2"
-			(uuid "d1bc7043-2d35-42cf-bf7e-31cebccd8a97")
+			(uuid "ed98aa18-82ff-41d4-8769-971aaf2c0ae2")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5645,7 +5645,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "abcfa88a-10ed-4878-ab9c-b2193fbe659d")
+		(uuid "93aeffe3-3141-49de-a54d-b9b16d66ce69")
 		(property "Reference" "#PWR008"
 			(at 99.06 66.04 0)
 			(hide yes)
@@ -5691,7 +5691,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "c2801766-fbc5-49bc-ab2f-08a4d6fa97da")
+			(uuid "c19510fb-6761-44f7-bb47-906d97125199")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5710,7 +5710,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0b8c80b1-270b-419c-890b-c5330c13d814")
+		(uuid "211d4535-e9d0-4a1f-ac88-7908350498bc")
 		(property "Reference" "Q1"
 			(at 117.01 43.18 90)
 			(effects
@@ -5755,13 +5755,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "3319be74-f20d-43f4-a472-642f4fac3321")
+			(uuid "0b82eafb-f394-40c3-b0ef-caa748c71674")
 		)
 		(pin "2"
-			(uuid "9d628fab-2f10-490b-8506-cb3914d9470c")
+			(uuid "ecbdc83f-83de-4a09-9fde-1db4629ec13e")
 		)
 		(pin "3"
-			(uuid "90b84e73-ab99-4997-948c-17cb65c27019")
+			(uuid "5469140f-13e6-4c22-9dff-ab1666d65b8a")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5780,7 +5780,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "25138af0-701b-4001-91c9-33cbc2709903")
+		(uuid "ac16d887-cd80-4f7d-949d-f787bfd1d3c7")
 		(property "Reference" "D2"
 			(at 148.67 53.34 90)
 			(effects
@@ -5825,10 +5825,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "94878c1f-9941-4cb0-a7ab-89319d5dce27")
+			(uuid "6dee62ee-594b-4fb6-b250-c7019c649bab")
 		)
 		(pin "2"
-			(uuid "e9650410-a1cd-4362-a125-1c42de076500")
+			(uuid "7a8f6ff7-f7cc-42af-bcf1-e63e21716149")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5847,7 +5847,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "03939e4b-6b81-46a5-8f03-18094088a67a")
+		(uuid "55c6e4ce-a2ce-4d48-889c-5e3de4078580")
 		(property "Reference" "#PWR009"
 			(at 144.78 58.42 0)
 			(hide yes)
@@ -5893,7 +5893,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "3651ced2-4247-4f7c-bf64-0cedbdb3415c")
+			(uuid "18849bad-6b0e-4716-affd-0bf2dacdd1ec")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5912,7 +5912,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "bccefd04-ca47-4838-b960-155f8ff894a3")
+		(uuid "8eb039af-bf9f-4473-a80f-91f554e36837")
 		(property "Reference" "L1"
 			(at 158.75 46.99 270)
 			(effects
@@ -5957,10 +5957,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "abdbc736-41bb-4fb1-a987-c54783f7e0c2")
+			(uuid "95bf02f2-b1d7-4e66-8392-ad94c1e3d0f1")
 		)
 		(pin "2"
-			(uuid "acb63960-4cda-486f-89a8-7fe69b355b35")
+			(uuid "650d7879-6726-4178-845d-ded134a543e8")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -5979,7 +5979,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "50bf934b-8884-4cee-aad7-0b52092327f1")
+		(uuid "d06f1007-1dbd-4e7a-8d96-f506b4dcd019")
 		(property "Reference" "R5"
 			(at 176.53 46.99 270)
 			(effects
@@ -5988,7 +5988,7 @@
 				)
 			)
 		)
-		(property "Value" "0.12R 1%"
+		(property "Value" "0.15R 1%"
 			(at 176.53 54.61 270)
 			(effects
 				(font
@@ -6024,10 +6024,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d596d727-be51-4ef2-8e1b-202a25c62992")
+			(uuid "d042996f-6b9d-436f-a7b1-767a13fad687")
 		)
 		(pin "2"
-			(uuid "b87a9790-f0ac-4826-b330-ba6bdeb7fb1b")
+			(uuid "d1c44e9d-f731-44e8-9399-e88729e8339e")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6046,7 +6046,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "682a6934-4c70-4b30-a9bd-706416196966")
+		(uuid "99cfea4d-4461-4323-bbd4-97f25360acd4")
 		(property "Reference" "C3"
 			(at 196.93 53.34 0)
 			(effects
@@ -6091,10 +6091,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "3b47a9be-54b4-41eb-b3e3-baaeb13c8303")
+			(uuid "614fda93-a38d-4f28-9840-09551dfc8e90")
 		)
 		(pin "2"
-			(uuid "67c9fd30-6595-432a-8902-4a1aa9687238")
+			(uuid "e127cecc-736a-4b7e-9f56-27c410061724")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6113,7 +6113,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "a516dee5-03df-444f-8f47-939188a90f0c")
+		(uuid "174bda71-6511-42f4-9b43-11ef7bebe557")
 		(property "Reference" "#PWR010"
 			(at 193.04 58.42 0)
 			(hide yes)
@@ -6159,7 +6159,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "ad2a8a0e-dd6a-4efc-a867-47fe9bb46be3")
+			(uuid "1bd15b3e-514c-41bb-bf1d-5cac15d83059")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6178,7 +6178,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "54d1e5ff-2422-4902-a590-7e8ca583c7da")
+		(uuid "29b0deea-1245-4f71-b667-d9575ef2881f")
 		(property "Reference" "J7"
 			(at 226.06 46.99 0)
 			(effects
@@ -6195,7 +6195,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical"
 			(at 226.06 50.8 0)
 			(hide yes)
 			(effects
@@ -6223,10 +6223,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ebd620e4-a852-4b81-abd7-776982c008e3")
+			(uuid "8ed88447-d0af-4aaa-a825-ba0de9de9467")
 		)
 		(pin "2"
-			(uuid "c92bf13d-6826-4f9c-975e-adba146255fd")
+			(uuid "3427705e-341c-44eb-aa04-73ca13071be3")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6245,7 +6245,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "7ac09588-5e88-4ef1-9a98-b6c10a7ac92d")
+		(uuid "d8b893ef-f80e-4415-9aac-f2ea61dba5c8")
 		(property "Reference" "R6"
 			(at 204.47 63.5 270)
 			(effects
@@ -6290,10 +6290,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "bf841fb3-146f-4ce2-a311-d834b2ab0d48")
+			(uuid "4439c1de-5874-4eea-8cad-2b901d90b4ef")
 		)
 		(pin "2"
-			(uuid "5708c4f5-40fa-4367-8c4f-0aafc82f058c")
+			(uuid "65aabeb0-00b4-41b1-92bf-0427f7a08537")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6312,7 +6312,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "84e7dab1-7030-4a50-b338-f8d8a6be9938")
+		(uuid "c4e2101d-6b55-4428-b415-b927f627a0de")
 		(property "Reference" "J5"
 			(at 226.06 64.77 0)
 			(effects
@@ -6329,7 +6329,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical"
 			(at 226.06 68.58 0)
 			(hide yes)
 			(effects
@@ -6357,10 +6357,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "b208c62d-2014-4bcf-b281-c1a72c693ced")
+			(uuid "6e57be72-50a1-4585-b16e-3f6a6f229538")
 		)
 		(pin "2"
-			(uuid "67de805d-ec67-4a34-be50-dba40917a697")
+			(uuid "a20485d0-a0c8-470e-957a-deb85b677d72")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6379,7 +6379,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "6f0a027c-2e14-49e7-b581-b466e86d2540")
+		(uuid "bbf7f4e2-efc4-44cb-a5ec-a2138c2c655f")
 		(property "Reference" "#PWR011"
 			(at 218.44 76.2 0)
 			(hide yes)
@@ -6425,7 +6425,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "44df4aff-dd15-47a3-853a-3c7d67b85733")
+			(uuid "75422dd0-b69d-4577-87fa-34a927f2c4fa")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6444,7 +6444,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "537706b5-6365-487a-93a7-7f3473022695")
+		(uuid "e214fcfa-4c5c-43ca-85e4-5458942bb7fa")
 		(property "Reference" "J8"
 			(at 226.06 82.55 0)
 			(effects
@@ -6461,7 +6461,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical"
 			(at 226.06 86.36 0)
 			(hide yes)
 			(effects
@@ -6489,10 +6489,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "379e08ae-5c5a-4199-91da-8dd51656c6e0")
+			(uuid "18b70725-98c2-4ef1-b48b-98b93bff46ac")
 		)
 		(pin "2"
-			(uuid "c2a36035-b81d-44a4-a297-50a6255af828")
+			(uuid "63330566-8fa5-4220-9883-8355fae69a7e")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6511,7 +6511,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "894aa108-b27f-4379-bdb7-5aaf954a7e80")
+		(uuid "619270b0-8c9b-4ecc-86e0-a2f7f178e90a")
 		(property "Reference" "J6"
 			(at 251.46 82.55 0)
 			(effects
@@ -6528,7 +6528,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical"
 			(at 251.46 86.36 0)
 			(hide yes)
 			(effects
@@ -6556,10 +6556,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "04c9b8f5-a1a2-49e3-b51c-5ddfdf53c987")
+			(uuid "51bf3c89-6c7b-4fb4-b3c2-1c280e88d925")
 		)
 		(pin "2"
-			(uuid "9210fa5c-3445-4039-85bc-402891572d57")
+			(uuid "14b261af-d458-4327-a5f2-5a1d7ba7f38c")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6578,7 +6578,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "edbbf0a5-d394-44d3-981f-64437cb091a4")
+		(uuid "bf63d216-1e26-4cc4-bd0c-0684b213b734")
 		(property "Reference" "#PWR012"
 			(at 243.84 93.98 0)
 			(hide yes)
@@ -6624,7 +6624,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "5f056c93-2d39-4647-95c1-95afd9d35714")
+			(uuid "250c3036-b3e6-4290-9a8e-6033c0ea7979")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6643,7 +6643,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "9b6e97c3-5fec-4d6f-89ec-f5f5618f7aa9")
+		(uuid "533e67c4-bd54-4a3c-8ee8-bfd3650ceb96")
 		(property "Reference" "SW3"
 			(at 274.32 95.25 0)
 			(effects
@@ -6688,22 +6688,22 @@
 			)
 		)
 		(pin "1"
-			(uuid "370543a2-8b0d-41a8-8ca4-10486ba5e6bd")
+			(uuid "762ffa80-a7c9-4c0f-b86f-0297901b2f10")
 		)
 		(pin "2"
-			(uuid "0a078269-f622-42a6-8a99-a964e5f50c0a")
+			(uuid "3cc33c26-503f-4f2b-978d-3a3255fd9d61")
 		)
 		(pin "3"
-			(uuid "3cef5e17-1e4c-4a5d-94f1-0004ea5be2d1")
+			(uuid "6b67cf14-4b93-462e-91c1-fe9e279707ff")
 		)
 		(pin "4"
-			(uuid "764bde2c-e5de-4377-8474-83c6b9f07e22")
+			(uuid "56f173e2-1345-46ad-ae60-6b876b7f1382")
 		)
 		(pin "5"
-			(uuid "3256b1d2-ad39-4a65-bbfa-bce56eea78f5")
+			(uuid "47532352-c1aa-44e7-9edb-ee92eec9bbc0")
 		)
 		(pin "6"
-			(uuid "d886416e-8371-4c72-831e-593f2aab973a")
+			(uuid "c00bd1ad-b7dd-47cd-8978-165d536ceea7")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6722,7 +6722,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f72babea-65e5-4665-b353-f9425363d92c")
+		(uuid "1a7bd488-0155-4ad8-886d-f339c78f64d8")
 		(property "Reference" "U2"
 			(at 316.23 92.71 0)
 			(effects
@@ -6767,28 +6767,28 @@
 			)
 		)
 		(pin "1"
-			(uuid "6fe9c212-522b-444e-aa8a-a7140f5663a0")
+			(uuid "f108a5bd-bf83-4e6a-be23-69a6919a03ea")
 		)
 		(pin "2"
-			(uuid "a120504a-e9af-4f5e-a0b2-a1eb984083e8")
+			(uuid "0d345717-445a-4af1-81ac-223d860eab59")
 		)
 		(pin "3"
-			(uuid "0a327cc8-f833-4d6f-9497-5959a426b7c3")
+			(uuid "9e65b1c9-b272-4e7b-93cf-a55d0422054c")
 		)
 		(pin "4"
-			(uuid "98324add-9cb7-4ccd-8f35-980beaf32c3c")
+			(uuid "b1e710eb-3fd0-400a-87f6-ec31f77bb9b8")
 		)
 		(pin "5"
-			(uuid "75aba994-8d5b-4625-8aa1-423cb4a4a4d1")
+			(uuid "1ab77d4c-9921-48dd-ae4f-860e802398bf")
 		)
 		(pin "6"
-			(uuid "8ae15e55-64cc-49f1-9ddd-2235bd3c41cf")
+			(uuid "6e8c4e0a-0155-4e2f-b1a1-0a438586d5ee")
 		)
 		(pin "7"
-			(uuid "acf473ea-3c5b-45e0-bd17-a411483fcd2c")
+			(uuid "aea2b901-3c23-4892-b965-e5b864ebed4c")
 		)
 		(pin "8"
-			(uuid "25392b7f-bc0f-4ef0-95f2-e824f653ae57")
+			(uuid "7db19008-f52b-40fb-9303-77d5c835511e")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6807,7 +6807,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "5489445e-f7d2-4202-9b8b-a9600d5ab9f0")
+		(uuid "0fbf0500-25f0-465c-a3d4-53ffd7255440")
 		(property "Reference" "#PWR013"
 			(at 322.58 116.84 0)
 			(hide yes)
@@ -6853,7 +6853,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "80793a3f-3567-49b9-bb2a-23cef9c324e3")
+			(uuid "69fe73ee-15cd-456f-be07-358d53c3b49b")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6872,7 +6872,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "83ab09bf-ded2-452a-9864-00931d0a8d44")
+		(uuid "348dc915-fb95-4ae1-831f-92720af0948d")
 		(property "Reference" "#PWR014"
 			(at 335.28 111.76 0)
 			(hide yes)
@@ -6918,7 +6918,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "61ef4769-266b-4cca-9bcf-863c9b05ce6a")
+			(uuid "1a5157e7-cd91-431c-a086-1d13f63beae0")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -6937,7 +6937,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0afb8dd6-0c86-41d1-aa2c-237476e336e9")
+		(uuid "2d5f6aac-9ee7-4b1d-98a9-270ad19250dc")
 		(property "Reference" "C6"
 			(at 349.33 93.98 0)
 			(effects
@@ -6982,10 +6982,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ec9f78b6-4d9a-4890-b9cd-21a3f11a9bb3")
+			(uuid "cec0040e-1b8f-48fc-aecb-99da87ccfa72")
 		)
 		(pin "2"
-			(uuid "617c0145-c4f4-4ea4-aeb3-90b7a2995ee1")
+			(uuid "4636eab2-3351-4e9d-b389-bf9f3a2b446c")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7004,7 +7004,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "60593d7f-f04f-4fd6-ba5a-16c567aca5fa")
+		(uuid "aedfc479-bd9d-4dfb-a44b-8a39cf541fd2")
 		(property "Reference" "#PWR015"
 			(at 345.44 99.06 0)
 			(hide yes)
@@ -7050,7 +7050,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "9a4a2ead-80c5-4918-928e-fbf9e13c669b")
+			(uuid "0ef5f856-b599-43ee-8205-1751c28986b6")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7069,7 +7069,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "16e4ca01-7f18-4a92-8cd0-89345dce3bc0")
+		(uuid "c0a34b7a-559f-4102-8280-15ee9a84d36d")
 		(property "Reference" "R8"
 			(at 359.49 97.79 0)
 			(effects
@@ -7114,10 +7114,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "26e365f8-efea-446b-b69b-2fedf56bcf81")
+			(uuid "0c4c6d6f-e313-40ee-8ecd-909b92191f00")
 		)
 		(pin "2"
-			(uuid "d4244cb4-2313-4c74-85b9-a21dbec21be0")
+			(uuid "175378e2-8586-44f2-a3b1-252ba68c0056")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7136,7 +7136,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "12aa6436-ca9d-4ff2-8f08-e7b392239e46")
+		(uuid "95c70013-83f3-42dd-8517-ec1e6cf2cdff")
 		(property "Reference" "R9"
 			(at 369.65 97.79 0)
 			(effects
@@ -7181,10 +7181,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "5c3c8f60-0cc9-4950-aaaf-b777950f39da")
+			(uuid "bb683539-b6f3-42cd-8045-c2bbfcf4202c")
 		)
 		(pin "2"
-			(uuid "391e4c56-da2c-4588-a913-86248f52df90")
+			(uuid "40d3d44c-d820-40a1-ab5b-4f686d4cce7c")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7203,7 +7203,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "aae5b76e-c948-4a43-81c1-41b0658d50d8")
+		(uuid "0fb3a45a-ce5a-4f61-a54a-c973dda53c9f")
 		(property "Reference" "J9"
 			(at 393.7 97.79 0)
 			(effects
@@ -7220,7 +7220,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Connector_Molex:Molex_PicoBlade_53047-0410_1x04_P1.25mm_Vertical"
 			(at 393.7 101.6 0)
 			(hide yes)
 			(effects
@@ -7248,16 +7248,16 @@
 			)
 		)
 		(pin "1"
-			(uuid "d56fd22c-97d3-4e00-b83a-b87dbed3bafa")
+			(uuid "4886d125-1a5b-4e76-ae99-f7b98ac19469")
 		)
 		(pin "2"
-			(uuid "2d5728f5-236d-4cd1-a308-6a30e07ae6fe")
+			(uuid "719603b8-3b44-4eee-b3e3-77968e23f278")
 		)
 		(pin "3"
-			(uuid "1c0c5256-12f0-4a18-a862-82c7546bb569")
+			(uuid "9f053050-a79f-4f7d-9e22-577c91e2c2fa")
 		)
 		(pin "4"
-			(uuid "afe518a3-834e-4cd4-9ba9-698f5cd7e6df")
+			(uuid "25e5a6a9-d034-4c24-8a32-358c89d2c927")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7276,7 +7276,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "1dbc4e1b-22f2-48c7-8e58-2040f1fec891")
+		(uuid "2a74567b-cfe6-4050-b2e6-e0a0f96eaac7")
 		(property "Reference" "#PWR016"
 			(at 386.08 111.76 0)
 			(hide yes)
@@ -7322,7 +7322,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "61e41c42-1a49-4f0e-9bf2-fc3839aa9a3d")
+			(uuid "99566349-3ac2-4bfd-b1a7-46d2f4e54961")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7341,7 +7341,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "e560130f-be4d-459e-9c2a-53c6fde9207d")
+		(uuid "e1a23792-2e3e-46f2-a41c-ce4d01455796")
 		(property "Reference" "#FLG003"
 			(at 375.92 83.82 0)
 			(hide yes)
@@ -7388,7 +7388,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "6e986a4d-c909-4b3a-a945-58a070daf4c0")
+			(uuid "cb21887c-10e3-4f60-85ad-08ba924c2873")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7407,7 +7407,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "acf82009-fd13-4e90-90d6-f228780e0702")
+		(uuid "8462a983-4dee-4944-9c68-22f1963102f1")
 		(property "Reference" "U1"
 			(at 106.68 82.55 0)
 			(effects
@@ -7454,34 +7454,34 @@
 			)
 		)
 		(pin "1"
-			(uuid "9e5606ce-10be-4e61-9a94-25587460a476")
+			(uuid "6579dbc9-f543-4242-b69f-52cc2d6b3fca")
 		)
 		(pin "2"
-			(uuid "efd9deb2-4a9a-4c0f-98ee-fb9fc5822286")
+			(uuid "90813d7e-1fb1-471a-9b93-3dfe23f85b3f")
 		)
 		(pin "3"
-			(uuid "336d4353-4f40-4985-8913-8501ab7949e6")
+			(uuid "e9443c9d-c3fd-475e-a757-e901dc9e906b")
 		)
 		(pin "4"
-			(uuid "55dcb4e8-0561-4c16-b7f1-7482c3db6c4f")
+			(uuid "0792502c-108c-4b76-a220-580dc808ccbc")
 		)
 		(pin "5"
-			(uuid "a984197d-a305-4b38-a076-2450ec532a6f")
+			(uuid "d23d8937-7b89-4370-a0ad-cb4cde0d6f0e")
 		)
 		(pin "6"
-			(uuid "af998568-a8d1-410c-a9aa-7299f16a6adb")
+			(uuid "74446962-2ab3-4bf9-b14d-116e6711c710")
 		)
 		(pin "7"
-			(uuid "6045f1ce-87a7-46c1-a1e6-4ea97003202a")
+			(uuid "f9654f9d-81a5-48f3-a1c2-1cc7029a6dd2")
 		)
 		(pin "8"
-			(uuid "23d7d748-ac9f-4d0b-baf5-53d67eefb3e2")
+			(uuid "9b5aef0e-3c75-4a7b-be3c-83ba53ee2038")
 		)
 		(pin "9"
-			(uuid "38270a8f-6723-43cb-95cb-57945bafa8a0")
+			(uuid "c09af614-3eaa-408c-b47f-abe00196f4ad")
 		)
 		(pin "10"
-			(uuid "be0719a5-79ca-49e6-8837-b72e41049d0d")
+			(uuid "b453e1af-2c0c-42c1-9690-103d4e6cd33e")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7500,7 +7500,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "15f7c7ec-0d3e-463b-a707-6af14a52741a")
+		(uuid "99313c59-2688-4b53-a6f2-e8ca12093f61")
 		(property "Reference" "#PWR017"
 			(at 114.3 109.22 0)
 			(hide yes)
@@ -7546,7 +7546,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "87a2da2d-5741-45a7-ae63-482cff77944f")
+			(uuid "fbe3d4f4-a7a7-4cd7-8c3b-c3016a835de3")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7565,7 +7565,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "dd2ecb94-8a2a-4248-ad5c-83a0f5b4abde")
+		(uuid "bda591db-c995-4b41-b961-0735d3156250")
 		(property "Reference" "C2"
 			(at 130.89 81.28 0)
 			(effects
@@ -7610,10 +7610,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "b1c73acf-9183-459b-91c6-edd2d0c25dc1")
+			(uuid "576ae31c-eed8-42b1-80f1-a8448d6df096")
 		)
 		(pin "2"
-			(uuid "49791e35-31a6-4052-90cb-f259ea25644c")
+			(uuid "890c9190-e417-4f4d-b0e5-082e2f3bf8f3")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7632,7 +7632,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e7453c9d-ca2f-4eb1-9bcd-adff118e93fb")
+		(uuid "bddec6ca-c264-44bb-bc06-176b1ab35e7a")
 		(property "Reference" "R2"
 			(at 133.43 104.14 0)
 			(effects
@@ -7677,10 +7677,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "f114d6ce-b61e-452a-9ac8-41a206fa2c13")
+			(uuid "d2f0639c-0a30-4171-b97a-8c95ccbedff5")
 		)
 		(pin "2"
-			(uuid "e39bd377-3c66-4417-8027-3f8e675fdcd5")
+			(uuid "d2990fa5-ffeb-4d58-8415-ab48578d917e")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7699,7 +7699,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3a42234f-b272-4028-9f4a-75413a9e702f")
+		(uuid "bf43ad3f-ca39-4734-ad31-5586a589e41b")
 		(property "Reference" "C4"
 			(at 133.43 111.76 0)
 			(effects
@@ -7744,10 +7744,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "453c0723-ec45-401b-bf0e-b5c98315f958")
+			(uuid "5e260b7a-e8b8-4b24-bb69-94ddea61ee53")
 		)
 		(pin "2"
-			(uuid "474eb79e-a05b-4726-b137-23438af94fff")
+			(uuid "44b0bf00-fcde-45a3-9236-7f4ef8b766ea")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7766,7 +7766,7 @@
 		(in_bom no)
 		(on_board no)
 		(dnp no)
-		(uuid "3c68a593-bc5f-47a2-acaf-c778fc2d9726")
+		(uuid "dc9b690a-e97b-4d76-8345-bcee8ac8c787")
 		(property "Reference" "#PWR018"
 			(at 129.54 116.84 0)
 			(hide yes)
@@ -7812,7 +7812,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "66d960e9-e2aa-410f-901a-b0ba1e2acfc9")
+			(uuid "9027c016-283d-4d4d-8c5d-f3dd07e7a572")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7831,7 +7831,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "04dd0705-d5a7-457d-8df4-09b4e6341e39")
+		(uuid "0cae1070-43ba-4188-98bc-f9e6e82e7e77")
 		(property "Reference" "R1"
 			(at 163.91 87.63 0)
 			(effects
@@ -7876,10 +7876,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "0e7d501a-c074-458a-bfdf-4008928d1612")
+			(uuid "16fa0247-00bf-48f5-afa8-55387759f552")
 		)
 		(pin "2"
-			(uuid "a8e6a5ea-5f13-4138-bce4-b52c5f082b7b")
+			(uuid "d97c213b-89e6-4e4c-a228-6218a4c71bcd")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7898,7 +7898,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ca7cd1a0-878b-48d9-9f35-94c28860705d")
+		(uuid "49bcc3da-a0ab-4ccc-b12c-89fc03f9c956")
 		(property "Reference" "D4"
 			(at 163.91 95.25 270)
 			(effects
@@ -7943,10 +7943,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "3a20cf6b-0cb9-49b2-a42e-5b15ea875a56")
+			(uuid "ec8bf954-aca4-4a27-a1be-549a0eeaba24")
 		)
 		(pin "2"
-			(uuid "d8d8a039-e724-4087-8404-fef09716790c")
+			(uuid "9fc440ea-eb7c-469d-81de-eed6866c1d6c")
 		)
 		(instances
 			(project "SolarNodeChargeController"
@@ -7965,7 +7965,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "05dbc04b-4ec0-453a-9a9c-53bee31e68c3")
+		(uuid "c6a6eba2-09dd-4c82-9a74-64e9d55d569d")
 		(property "Reference" "D3"
 			(at 176.61 95.25 270)
 			(effects
@@ -8010,10 +8010,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "6a82b57e-b53b-42f9-8ba0-39e443ccfb43")
+			(uuid "78127d80-a36f-4eec-a98e-a0b45ff25605")
 		)
 		(pin "2"
-			(uuid "cc160216-619d-4052-9ae2-e2538df85080")
+			(uuid "a3571319-78e6-46bd-9e81-f447f908effe")
 		)
 		(instances
 			(project "SolarNodeChargeController"
