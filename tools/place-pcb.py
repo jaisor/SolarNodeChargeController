@@ -1,8 +1,8 @@
 # Builds the draft PCB: footprints from the schematic netlist, placed by hand-tuned
 # coordinates, nets assigned, reference labels auto-placed clear of everything, M3 holes
 # in the corners and a chamfered Edge.Cuts outline. No tracks. Run with KiCad's Python:
-#   "C:\Program Files\KiCad\10.0\bin\python.exe" tools/place-pcb.py SolarNodeChargeController <netlist.xml>
-# Netlist: kicad-cli sch export netlist --format kicadxml -o net.xml SolarNodeChargeController/SolarNodeChargeController.kicad_sch
+#   "C:\Program Files\KiCad\10.0\bin\python.exe" tools/place-pcb.py <netlist.xml> [project dir, default: repo root]
+# Netlist: kicad-cli sch export netlist --format kicadxml -o net.xml SolarNodeChargeController.kicad_sch
 import os
 import sys
 import xml.etree.ElementTree as ET
@@ -247,7 +247,8 @@ def edge_outline(board):
 
 
 def main():
-    proj, netfile = sys.argv[1], sys.argv[2]
+    netfile = sys.argv[1]
+    proj = sys.argv[2] if len(sys.argv) > 2 else "."
     pcb_path = os.path.join(proj, NAME + ".kicad_pcb")
     root = ET.parse(netfile).getroot()
 

@@ -1,7 +1,7 @@
 # Routes the placed board: a small grid A* router (two layers, 8-way moves, vias) written for
 # this design, plus GND stitching vias and GND pours. Needs an unrouted board, so run it
 # right after tools/place-pcb.py (re-run both to re-route). With KiCad's Python:
-#   "C:\Program Files\KiCad\10.0\bin\python.exe" tools/route-pcb.py SolarNodeChargeController
+#   "C:\Program Files\KiCad\10.0\bin\python.exe" tools/route-pcb.py [project dir, default: repo root]
 # Then verify with: kicad-cli pcb drc --schematic-parity --severity-all ...
 import heapq
 import math
@@ -371,7 +371,7 @@ def add_gnd_zone(board, layer, gnd, connection):
 
 
 def main():
-    path = os.path.join(sys.argv[1], NAME + ".kicad_pcb")
+    path = os.path.join(sys.argv[1] if len(sys.argv) > 1 else ".", NAME + ".kicad_pcb")
     board = pcbnew.LoadBoard(path)
     # Removing zones through SWIG crashes in KiCad 10, so start from a freshly placed board.
     if len(board.GetTracks()) or len(board.Zones()):

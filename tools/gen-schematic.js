@@ -1,11 +1,11 @@
 // Generates the CN3791 solar charger schematic (datasheet Figure 1) for KiCad 10.
-// Usage: node tools/gen-schematic.js SolarNodeChargeController   (run from this folder)
+// Usage: node tools/gen-schematic.js [project dir, default: repo root]
 const fs = require("fs");
 const crypto = require("crypto");
 const path = require("path");
 
 const LIBDIR = "C:/Program Files/KiCad/10.0/share/kicad/symbols";
-const PROJ = process.argv[2];
+const PROJ = process.argv[2] || ".";
 const NAME = "SolarNodeChargeController";
 const SCH = path.join(PROJ, NAME + ".kicad_sch");
 // Deterministic UUIDs keyed by what an item is (symbol ref, wire endpoints, ...), so

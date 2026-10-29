@@ -157,7 +157,7 @@ The MCU can't sense SW3's position. Firmware has to know which position is set, 
 
 ## Fabrication
 
-The fabrication package is generated into `SolarNodeChargeController/output/fab/`. It isn't tracked in git, so attach it to a release instead:
+The fabrication package is generated into `output/fab/`. It isn't tracked in git, so attach it to a release instead:
 
 | File | Contents |
 |---|---|
@@ -171,8 +171,8 @@ LCSC part numbers are only filled in where verified (D5–D8). Pick the rest in 
 Regenerating the package (after the board is final and DRC is clean):
 
 ```bash
-OUT=SolarNodeChargeController/output/fab
-P=SolarNodeChargeController/SolarNodeChargeController
+OUT=output/fab
+P=SolarNodeChargeController
 kicad-cli pcb export gerbers --layers F.Cu,B.Cu,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts --subtract-soldermask --check-zones -o $OUT/gerbers $P.kicad_pcb
 kicad-cli pcb export drill --format excellon --excellon-units mm --excellon-zeros-format decimal --drill-origin absolute --excellon-separate-th --generate-map --map-format gerberx2 -o $OUT/gerbers/ $P.kicad_pcb
 kicad-cli pcb export pos --format csv --units mm --side both -o $OUT/pos-kicad.csv $P.kicad_pcb
@@ -183,9 +183,9 @@ node tools/fab-package.js $OUT
 ## Repository layout
 
 ```
-SolarNodeChargeController/      KiCad project: .kicad_pro, .kicad_sch, .kicad_pcb
-  SolarNode.kicad_sym           project symbol library (CN3791)
-  sym-lib-table
+SolarNodeChargeController.kicad_pro / .kicad_sch / .kicad_pcb   KiCad project
+SolarNode.kicad_sym             project symbol library (CN3791)
+sym-lib-table
 tools/
   gen-schematic.js              generates the schematic (Node)
   place-pcb.py                  places footprints, labels, holes, outline (KiCad Python / pcbnew)
@@ -204,15 +204,15 @@ The whole design can be rebuilt from the scripts. Run these from the repo root, 
 
 ```bash
 # 1. Schematic (Node): rewrites the .kicad_sch, SolarNode.kicad_sym and sym-lib-table
-node tools/gen-schematic.js SolarNodeChargeController
-kicad-cli sch erc --format json --severity-all -o erc.json SolarNodeChargeController/SolarNodeChargeController.kicad_sch
+node tools/gen-schematic.js
+kicad-cli sch erc --format json --severity-all -o erc.json SolarNodeChargeController.kicad_sch
 # 2. Netlist for the board scripts
-kicad-cli sch export netlist --format kicadxml -o net.xml SolarNodeChargeController/SolarNodeChargeController.kicad_sch
+kicad-cli sch export netlist --format kicadxml -o net.xml SolarNodeChargeController.kicad_sch
 # 3. Board (KiCad's Python): placement + labels + holes + outline, then routing + GND pours (~5 min)
-"C:/Program Files/KiCad/10.0/bin/python.exe" tools/place-pcb.py SolarNodeChargeController net.xml
-"C:/Program Files/KiCad/10.0/bin/python.exe" tools/route-pcb.py SolarNodeChargeController
+"C:/Program Files/KiCad/10.0/bin/python.exe" tools/place-pcb.py net.xml
+"C:/Program Files/KiCad/10.0/bin/python.exe" tools/route-pcb.py
 # 4. Check: expect 0 violations, 0 unconnected, 0 parity issues
-kicad-cli pcb drc --schematic-parity --severity-all --format json -o drc.json SolarNodeChargeController/SolarNodeChargeController.kicad_pcb
+kicad-cli pcb drc --schematic-parity --severity-all --format json -o drc.json SolarNodeChargeController.kicad_pcb
 ```
 
 The scripts overwrite their output files. Once you edit the schematic or board in KiCad, stop regenerating that file (or port your edits into the scripts first).
@@ -220,10 +220,10 @@ The scripts overwrite their output files. Once you edit the schematic or board i
 Refreshing the images in `docs/images/`:
 
 ```bash
-kicad-cli sch export svg -o docs/images SolarNodeChargeController/SolarNodeChargeController.kicad_sch
-kicad-cli pcb render --side top --width 1600 --height 900 --quality high --zoom 1.6 -o docs/images/pcb-top.png SolarNodeChargeController/SolarNodeChargeController.kicad_pcb
-kicad-cli pcb render --side bottom --width 1600 --height 900 --quality high --zoom 1.6 -o docs/images/pcb-bottom.png SolarNodeChargeController/SolarNodeChargeController.kicad_pcb
-kicad-cli pcb render --width 1600 --height 1000 --quality high --perspective --rotate "-40,0,-25" -o docs/images/pcb-iso.png SolarNodeChargeController/SolarNodeChargeController.kicad_pcb
+kicad-cli sch export svg -o docs/images SolarNodeChargeController.kicad_sch
+kicad-cli pcb render --side top --width 1600 --height 900 --quality high --zoom 1.6 -o docs/images/pcb-top.png SolarNodeChargeController.kicad_pcb
+kicad-cli pcb render --side bottom --width 1600 --height 900 --quality high --zoom 1.6 -o docs/images/pcb-bottom.png SolarNodeChargeController.kicad_pcb
+kicad-cli pcb render --width 1600 --height 1000 --quality high --perspective --rotate "-40,0,-25" -o docs/images/pcb-iso.png SolarNodeChargeController.kicad_pcb
 ```
 
 (The schematic export is named `SolarNodeChargeController.svg`; rename it to `schematic.svg`.)

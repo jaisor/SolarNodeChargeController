@@ -1,11 +1,11 @@
 // Turns KiCad's BOM and position CSVs into JLCPCB-style assembly files, writes the fab notes and
 // zips the Gerbers. Run from the repo root after the kicad-cli exports (see README, "Fabrication"):
-//   node tools/fab-package.js SolarNodeChargeController/output/fab
+//   node tools/fab-package.js [output dir, default: output/fab]
 const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
 
-const OUT = process.argv[2];
+const OUT = process.argv[2] || "output/fab";
 const NAME = "SolarChargeModule_v1.0";
 
 // Manufacturer part numbers for the parts that need a specific one; generic passives are left to

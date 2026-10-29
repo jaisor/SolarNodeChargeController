@@ -2,10 +2,10 @@
 
 KiCad 10 project for a solar-powered 1S LiPo charger board that powers a separate module and reports power data over I2C. Target use: solar LoRa mesh nodes, specifically the user's own SNAP v1.2 enclosure (https://makerworld.com/en/models/3360988-snap-v1-2-solar-node-adaptable-platform-2x200ma) — 2 × FellDen 5V 200 mA 110×60 mm panels (https://www.amazon.com/dp/B0BND5NYGK), 18650 cell, XIAO nRF52840 + Wio-SX1262 running Meshtastic/MeshCore. The board replaces SNAP's CN3158 (SDBK03TA) MPPT module, inline 1N5819s and hand wiring, and adds the INA219 (auto-detected by Meshtastic and MeshCore).
 
-- KiCad project: `SolarNodeChargeController/SolarNodeChargeController.kicad_pro` (the template nests `<name>/<name>/`)
-- Schematic: single A3 sheet, `SolarNodeChargeController/SolarNodeChargeController.kicad_sch`
+- KiCad project: `SolarNodeChargeController.kicad_pro` at the repo root (flattened from KiCad's nested `<name>/<name>/` template layout; the folder name still matches the project name, which the MCP server relies on)
+- Schematic: single A3 sheet, `SolarNodeChargeController.kicad_sch`
 - PCB: `SolarNodeChargeController.kicad_pcb` — placed and auto-routed, 56.5 × 29 mm, 2 mm chamfers, 4× M3 holes, GND pours both layers
-- Images: `docs/images/` (tracked, used by the README): `schematic.svg`, `pcb-top.png`, `pcb-bottom.png`, `pcb-iso.png`, `wiring-diagram.png` (drawn by `tools/make-diagram.py` from `pcb-top.png`), and `snap/` — three photos from the user's own SNAP v1.2 MakerWorld post (node, internals, component map), downloaded as WebP and converted to JPEG. The Amazon panel photos were deliberately not copied (seller's images); the diagram draws panels, the 18650 and the node instead and the README links the listing. `SolarNodeChargeController/output/` holds regenerable outputs (schematic PDF, BOM, ERC/DRC reports) and is gitignored.
+- Images: `docs/images/` (tracked, used by the README): `schematic.svg`, `pcb-top.png`, `pcb-bottom.png`, `pcb-iso.png`, `wiring-diagram.png` (drawn by `tools/make-diagram.py` from `pcb-top.png`), and `snap/` — three photos from the user's own SNAP v1.2 MakerWorld post (node, internals, component map), downloaded as WebP and converted to JPEG. The Amazon panel photos were deliberately not copied (seller's images); the diagram draws panels, the 18650 and the node instead and the README links the listing. `output/` holds regenerable outputs (schematic PDF, BOM, ERC/DRC reports) and is gitignored.
 
 ## Status
 
@@ -47,15 +47,15 @@ The whole design is reproducible from `tools/`. Full pipeline, from the repo roo
 
 ```bash
 # 1. Schematic (Node): rewrites the .kicad_sch, SolarNode.kicad_sym and sym-lib-table
-node tools/gen-schematic.js SolarNodeChargeController
-kicad-cli sch erc --format json --severity-all -o erc.json SolarNodeChargeController/SolarNodeChargeController.kicad_sch
+node tools/gen-schematic.js
+kicad-cli sch erc --format json --severity-all -o erc.json SolarNodeChargeController.kicad_sch
 # 2. Netlist for the board scripts
-kicad-cli sch export netlist --format kicadxml -o net.xml SolarNodeChargeController/SolarNodeChargeController.kicad_sch
+kicad-cli sch export netlist --format kicadxml -o net.xml SolarNodeChargeController.kicad_sch
 # 3. Board (KiCad's Python): placement + labels + holes + outline, then routing + GND pours (~5 min)
-"C:/Program Files/KiCad/10.0/bin/python.exe" tools/place-pcb.py SolarNodeChargeController net.xml
-"C:/Program Files/KiCad/10.0/bin/python.exe" tools/route-pcb.py SolarNodeChargeController
+"C:/Program Files/KiCad/10.0/bin/python.exe" tools/place-pcb.py net.xml
+"C:/Program Files/KiCad/10.0/bin/python.exe" tools/route-pcb.py
 # 4. Check: expect 0 violations, 0 unconnected, 0 parity issues
-kicad-cli pcb drc --schematic-parity --severity-all --format json -o drc.json SolarNodeChargeController/SolarNodeChargeController.kicad_pcb
+kicad-cli pcb drc --schematic-parity --severity-all --format json -o drc.json SolarNodeChargeController.kicad_pcb
 ```
 
 Then refresh the README images (commands in README.md, "Regenerating the design"), and redraw the wiring diagram: `"C:/Program Files/KiCad/10.0/bin/python.exe" tools/make-diagram.py` (KiCad's Python has Pillow + NumPy; the system Python has Pillow only). The diagram's connector positions come from the `CONN` table in the script — update it if the placement changes.
@@ -66,7 +66,7 @@ Then refresh the README images (commands in README.md, "Regenerating the design"
 
 ## Fabrication
 
-Package in `SolarNodeChargeController/output/fab/` (gitignored; attach to a release tag): `SolarChargeModule_v1.0_gerbers.zip` (9 Gerber X2 layers + job file + PTH/NPTH Excellon + drill maps), `FAB_NOTES.txt` (order settings and assembly cautions), `SolarChargeModule_v1.0_BOM.csv` / `_CPL.csv` (JLCPCB-style; H1–H4 excluded; MPNs for the specific parts, LCSC only for D5–D8 = C191023). Checked: job file lists all 9 layers, 2 layers / 1.6 mm / 56.5 × 29 mm; PTH drill 71 hits (45 vias + 26 pads), NPTH 4 × 3.2 mm; vias tented. Regenerate with the commands in README "Fabrication"; `tools/fab-package.js` does the BOM/CPL conversion, notes and zip.
+Package in `output/fab/` (gitignored; attach to a release tag): `SolarChargeModule_v1.0_gerbers.zip` (9 Gerber X2 layers + job file + PTH/NPTH Excellon + drill maps), `FAB_NOTES.txt` (order settings and assembly cautions), `SolarChargeModule_v1.0_BOM.csv` / `_CPL.csv` (JLCPCB-style; H1–H4 excluded; MPNs for the specific parts, LCSC only for D5–D8 = C191023). Checked: job file lists all 9 layers, 2 layers / 1.6 mm / 56.5 × 29 mm; PTH drill 71 hits (45 vias + 26 pads), NPTH 4 × 3.2 mm; vias tented. Regenerate with the commands in README "Fabrication"; `tools/fab-package.js` does the BOM/CPL conversion, notes and zip.
 
 The SW3 back label was flipped on the routed board directly with a pcbnew patch (no re-route), and place-pcb.py was updated to match, so a full regenerate gives the same label.
 
@@ -129,7 +129,7 @@ Git repo at this folder (branch `main`), remote `origin` = https://github.com/ja
 
 ### MCP server
 User-scope `kicad` MCP server (PyPI `kicad-mcp-server` 3.5.0, run with KiCad's Python), configured in `~/.claude.json` with env vars:
-- `KICAD_MCP_PROJECTS_BASE` = this folder (projects are its direct subfolders, so the project name is `SolarNodeChargeController`)
+- `KICAD_MCP_PROJECTS_BASE` = `C:\Users\jaiso\Projects\Claude\KiCad`, this repo's parent: projects are its direct subfolders, so the project name is `SolarNodeChargeController` (the repo folder). Updated when the project was flattened.
 - `KICAD_MCP_TASKS_DIR` = `C:\Users\jaiso\Documents\KiCad\10.0\mcp-tasks`
 - `KICAD_MCP_KICAD_CLI` = `C:\Program Files\KiCad\10.0\bin\kicad-cli.exe`
 
@@ -141,12 +141,12 @@ It is **read/export only** (ERC, DRC, board info, BOM, netlist, Gerbers, PDF/SVG
 The schematic is generated by `tools/gen-schematic.js` (Node), which writes the whole `.kicad_sch` plus `SolarNode.kicad_sym` and `sym-lib-table`:
 
 ```
-node tools/gen-schematic.js SolarNodeChargeController
+node tools/gen-schematic.js
 ```
 
 - UUIDs are deterministic (SHA-1 of the item's key: `sym/<ref>`, `pin/<ref>/<n>`, wire endpoints, label name + position). Regenerating an unchanged design is byte-identical, and symbol UUIDs — which the PCB footprints link to — stay put across edits as long as references don't change.
 - **The generator is the source of truth only while no one edits the schematic in KiCad.** If the user saves changes from the Schematic Editor, port them into the generator (or switch to surgical edits) before regenerating, or they are lost.
-- Editor-open and commit-first rules: see **Regenerating the design**. Old `*.kicad_sch.bak-*` files from before git are ignored and can be deleted.
+- Editor-open and commit-first rules: see **Regenerating the design**. Pre-git schematic backups (`*.kicad_sch.bak-*`) were kept in `output/backups/` (gitignored) when the project was flattened; they can be deleted.
 - Verify every change:
   1. `kicad-cli sch export netlist --format kicadxml` and check each net's pins
   2. `kicad-cli sch erc --format json --severity-all` → expect 0 items
