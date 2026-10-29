@@ -1,11 +1,11 @@
 # Solar Node Charge Controller
 
-KiCad 10 project for a solar-powered 1S LiPo charger board that powers a separate module (e.g. a LoRa/mesh node) and reports power data to an external MCU over I2C.
+KiCad 10 project for a solar-powered 1S LiPo charger board that powers a separate module and reports power data over I2C. Target use: solar LoRa mesh nodes, specifically the user's own SNAP v1.2 enclosure (https://makerworld.com/en/models/3360988-snap-v1-2-solar-node-adaptable-platform-2x200ma) — 2 × FellDen 5V 200 mA 110×60 mm panels (https://www.amazon.com/dp/B0BND5NYGK), 18650 cell, XIAO nRF52840 + Wio-SX1262 running Meshtastic/MeshCore. The board replaces SNAP's CN3158 (SDBK03TA) MPPT module, inline 1N5819s and hand wiring, and adds the INA219 (auto-detected by Meshtastic and MeshCore).
 
 - KiCad project: `SolarNodeChargeController/SolarNodeChargeController.kicad_pro` (the template nests `<name>/<name>/`)
 - Schematic: single A3 sheet, `SolarNodeChargeController/SolarNodeChargeController.kicad_sch`
 - PCB: `SolarNodeChargeController.kicad_pcb` — placed and auto-routed, 56.5 × 29 mm, 2 mm chamfers, 4× M3 holes, GND pours both layers
-- Images: `docs/images/` (tracked, used by the README): `schematic.svg`, `pcb-top.png`, `pcb-bottom.png`, `pcb-iso.png`. `SolarNodeChargeController/output/` holds regenerable outputs (schematic PDF, BOM, ERC/DRC reports) and is gitignored.
+- Images: `docs/images/` (tracked, used by the README): `schematic.svg`, `pcb-top.png`, `pcb-bottom.png`, `pcb-iso.png`, `wiring-diagram.png` (drawn by `tools/make-diagram.py` from `pcb-top.png`), and `snap/` — three photos from the user's own SNAP v1.2 MakerWorld post (node, internals, component map), downloaded as WebP and converted to JPEG. The Amazon panel photos were deliberately not copied (seller's images); the diagram draws panels, the 18650 and the node instead and the README links the listing. `SolarNodeChargeController/output/` holds regenerable outputs (schematic PDF, BOM, ERC/DRC reports) and is gitignored.
 
 ## Status
 
@@ -58,7 +58,7 @@ kicad-cli sch export netlist --format kicadxml -o net.xml SolarNodeChargeControl
 kicad-cli pcb drc --schematic-parity --severity-all --format json -o drc.json SolarNodeChargeController/SolarNodeChargeController.kicad_pcb
 ```
 
-Then refresh the README images (commands in README.md, "Regenerating the design").
+Then refresh the README images (commands in README.md, "Regenerating the design"), and redraw the wiring diagram: `"C:/Program Files/KiCad/10.0/bin/python.exe" tools/make-diagram.py` (KiCad's Python has Pillow + NumPy; the system Python has Pillow only). The diagram's connector positions come from the `CONN` table in the script — update it if the placement changes.
 
 - Each step overwrites its output. **Once anyone edits the schematic or board in KiCad, stop regenerating that file**: port the edits into the scripts first, or switch to editing in KiCad (Update PCB from Schematic carries schematic changes to the board).
 - Before writing, check the editor for that file is closed (`~*.kicad_sch.lck` / `~*.kicad_pcb.lck`) or that the file is unchanged since the last commit; afterwards the user must close the editor **without saving** and reopen.
@@ -125,7 +125,7 @@ U2 INA219 IN+/IN- <- SW3 DPDT: SOLAR = (PV, VIN) across R7 | BATT = (BATT+, BAT_
 ## Tooling and workflow
 
 ### Version control
-Git repo at this folder (branch `main`), remote `origin` = https://github.com/jaisor/SolarNodeChargeController (private). Tracked: `.kicad_pro/.kicad_sch/.kicad_pcb`, `SolarNode.kicad_sym`, `sym-lib-table`, `tools/` (schematic generator, PCB placement and routing scripts, fab packager), `CLAUDE.md`, `README.md` with images in `docs/images/` (schematic SVG; top, bottom and angled 3D renders — regenerate them when the design changes; commands are in the README). Ignored (see `.gitignore`): `*.kicad_prl` (per-user view state), `*.lck`, KiCad autosaves/backups, `*.bak*`, and `output/` (regenerable reports, BOM, PDFs, fab files — attach fab packages to a release tag instead). `.gitattributes` pins KiCad files to LF because `core.autocrlf=true` on this machine.
+Git repo at this folder (branch `main`), remote `origin` = https://github.com/jaisor/SolarNodeChargeController (private). Tracked: `.kicad_pro/.kicad_sch/.kicad_pcb`, `SolarNode.kicad_sym`, `sym-lib-table`, `tools/` (schematic generator, PCB placement and routing scripts, fab packager, wiring-diagram drawer), `CLAUDE.md`, `README.md` with images in `docs/images/` (schematic SVG; top, bottom and angled 3D renders — regenerate them when the design changes; commands are in the README). Ignored (see `.gitignore`): `*.kicad_prl` (per-user view state), `*.lck`, KiCad autosaves/backups, `*.bak*`, and `output/` (regenerable reports, BOM, PDFs, fab files — attach fab packages to a release tag instead). `.gitattributes` pins KiCad files to LF because `core.autocrlf=true` on this machine.
 
 ### MCP server
 User-scope `kicad` MCP server (PyPI `kicad-mcp-server` 3.5.0, run with KiCad's Python), configured in `~/.claude.json` with env vars:

@@ -1,6 +1,6 @@
 # Solar Node Charge Controller
 
-A small solar charger board for a single-cell (1S) Li-ion/LiPo battery. It is meant to keep a low-power node (a LoRa/mesh radio, sensor or similar module) running off solar. Up to four 5V panels feed a CN3791 MPPT buck charger. A switched output powers the module, and an INA219 reports voltage and current to an external MCU over I2C.
+A small solar charger board for a single-cell (1S) Li-ion/LiPo battery, built for solar-powered LoRa mesh nodes such as [SNAP v1.2](https://makerworld.com/en/models/3360988-snap-v1-2-solar-node-adaptable-platform-2x200ma). Up to four 5V panels feed a CN3791 MPPT buck charger. A switched output powers the node, and an INA219 reports voltage and current over I2C.
 
 Designed in KiCad 10.
 
@@ -9,6 +9,56 @@ Designed in KiCad 10.
 <p align="center">
   <img src="docs/images/pcb-iso.png" alt="3D render of the routed board" width="720">
 </p>
+
+## Built for solar mesh nodes
+
+This controller is meant for solar mesh nodes like the [SNAP v1.2: Solar Node Adaptable Platform](https://makerworld.com/en/models/3360988-snap-v1-2-solar-node-adaptable-platform-2x200ma). It simplifies their build in three ways:
+
+- **Easy, clean connections:** the panels, battery, node and switches each plug into their own connector.
+- **Improved solar charging:** an MPPT charger tuned for 5V panels, with a diode for every panel built into the board.
+- **I2C power sensing:** configurable for either the battery or the solar circuit.
+
+I2C power sensors are supported natively by both [Meshtastic](https://meshtastic.org) and [MeshCore](https://github.com/meshcore-dev/MeshCore). In most cases the node recognizes the INA219 automatically once it's connected.
+
+<p align="center">
+  <img src="docs/images/snap/snap-node.jpg" alt="SNAP v1.2 solar node on its mount" width="300">
+  <img src="docs/images/snap/snap-internals.jpg" alt="Inside SNAP v1.2: build grid with 18650 holder and XIAO node" width="300">
+</p>
+
+<p align="center">
+  <img src="docs/images/wiring-diagram.png" alt="Wiring diagram: panels, 18650, switches and a XIAO nRF52840 + Wio-SX1262 node connected to the charge module" width="900">
+</p>
+
+In the SNAP v1.2 example build, shown below, the board replaces several separately wired parts:
+
+<p align="center">
+  <img src="docs/images/snap/snap-component-map.jpg" alt="SNAP v1.2 component map: enclosure, 2 × 200mA panels, CN3158 MPPT module, Schottky diodes, 18650, XIAO nRF52840 + Wio-SX1262" width="800">
+</p>
+
+| Example build part | With this board |
+|---|---|
+| CN3158 MPPT module (SDBK03TA) | CN3791 MPPT buck charger, tuned for 5V panels (VIN held at 4.58V) and charging at 0.8A |
+| One 1N5819 per panel, soldered inline | A 1N5819WS per input on the board, for up to four panels |
+| Hand-soldered panel, battery and node wiring | Plug-in Micro JST 1.25 connectors for every connection |
+| Latching on/off switch wired into the battery lead | Two switch connectors: SW_BATT cuts the battery, SW_LOAD cuts only the node |
+| (none) | INA219 power monitor on I2C, switchable between the panels and the battery |
+
+### Example wiring
+
+| Board connector | Connects to |
+|---|---|
+| J1, J2 (Solar_5V) | Two [FellDen 5V 200mA 110×60mm panels](https://www.amazon.com/dp/B0BND5NYGK), the ones SNAP v1.2 uses. J3 and J4 take up to two more |
+| J5 (BATT) | An 18650 Li-ion cell (1S, 3.0–4.2V) in its holder |
+| J8 (SW_LOAD) | The SNAP on/off switch cap's latching button. To cut the battery entirely, use J7 (SW_BATT) as well, or instead |
+| J7 / J8 left unswitched | Both switch connectors are in series with the power path, so an unused one needs a jumper (a plug with its two wires shorted). Otherwise the battery or the node stays disconnected |
+| J6 (VOUT) | The XIAO nRF52840's BAT+ / BAT− pads, which is where SNAP powers it from the 18650 today |
+| J9 (I2C) | XIAO 3V3 → VCC, D4 → SDA, D5 → SCL, GND → GND |
+
+Set SW3 to BATT to see the battery's charge and discharge current, or to SOLAR to see what the panels deliver.
+
+The INA219 uses address 0x40, which some other I2C sensors also use (for example the SHT21/HTU21D and HDC1080). If your node already has one of those, the two will clash.
+
+In Meshtastic, enable power metrics in the telemetry settings so the readings are sent to the mesh.
 
 ## Features
 
@@ -140,8 +190,9 @@ tools/
   gen-schematic.js              generates the schematic (Node)
   place-pcb.py                  places footprints, labels, holes, outline (KiCad Python / pcbnew)
   route-pcb.py                  routes tracks, GND stitching vias and pours (run after place-pcb.py)
+  make-diagram.py               draws docs/images/wiring-diagram.png from the board render
   fab-package.js                JLCPCB-style BOM/CPL, fab notes and Gerber zip from the kicad-cli exports
-docs/images/                    images used in this README
+docs/images/                    images used in this README (snap/: photos from the SNAP v1.2 MakerWorld post)
 CLAUDE.md                       design decisions and working notes
 ```
 
@@ -176,3 +227,9 @@ kicad-cli pcb render --width 1600 --height 1000 --quality high --perspective --r
 ```
 
 (The schematic export is named `SolarNodeChargeController.svg`; rename it to `schematic.svg`.)
+
+After refreshing `pcb-top.png`, redraw the wiring diagram with KiCad's Python, which includes Pillow and NumPy:
+
+```bash
+"C:/Program Files/KiCad/10.0/bin/python.exe" tools/make-diagram.py
+```
