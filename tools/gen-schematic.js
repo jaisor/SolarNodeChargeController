@@ -337,6 +337,10 @@ stub(J9.pin("1"), "left", "VCC_MCU", 5.08);
 stub(J9.pin("2"), "left", "SDA", 5.08);
 stub(J9.pin("3"), "left", "SCL", 5.08);
 gnd(wire(J9.pin("4"), P(386.08, J9.pin("4").y), P(386.08, J9.pin("4").y + 5.08)));
+// M3 mounting holes (non-plated), one per board corner
+for (let i = 0; i < 4; i++)
+  place(`H${i + 1}`, "Mechanical:MountingHole", 302.26 + i * 12.7, 142.24, { value: "M3", fp: "MountingHole:MountingHole_3.2mm_M3" });
+
 // VCC_MCU only comes from the header; flag it for ERC.
 wire(P(375.92, 83.82), P(375.92, 86.36));
 flag(P(375.92, 83.82));
@@ -465,7 +469,7 @@ function emitPart(p) {
 		(at ${x} ${y} ${p.rot})
 ${p.mirror ? `\t\t(mirror ${p.mirror})\n` : ""}		(unit 1)
 		(exclude_from_sim no)
-		(in_bom ${o.power ? "no" : "yes"})
+		(in_bom ${o.power || /\n\t\t\(in_bom no\)/.test(p.sym.text) ? "no" : "yes"})
 		(on_board ${o.power ? "no" : "yes"})
 		(dnp no)
 		(uuid "${uuid(`sym/${p.ref}`)}")
