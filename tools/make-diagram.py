@@ -25,7 +25,7 @@ BOARD_W_MM, BOARD_H_MM = 52.0, 29.0
 CHAMFER_MM, HOLE_INSET_MM, HOLE_DIA_MM = 2.0, 4.0, 3.2
 # Connector body centres in board mm (from tools/place-pcb.py PLACEMENT)
 CONN = {
-    "J1": (13.7, 2.85), "J2": (13.7, 9.15), "J3": (13.7, 15.45), "J4": (13.7, 21.75),
+    "J1": (13.25, 2.85), "J2": (13.25, 9.35), "J3": (13.4, 15.45), "J4": (13.25, 21.75),
     "J7": (48.27, 10.8), "J8": (48.27, 17.7), "J6": (41.8, 17.3), "J5": (41.8, 23.5),
     "J9": (3.3, 15.5),
 }
@@ -129,7 +129,7 @@ def node(x, y):
 panel(50, 250, 190, 104, "5V 200mA · 110×60mm")
 panel(50, 430, 190, 104, "5V 200mA · 110×60mm")
 solar_box = callout("J2", (520, 600), YELLOW, "SOLAR IN  J1–J4", "up to 4 × 5V panels", "left")
-callout("J1", (520, 250 + 20), YELLOW, "Solar_5V", "own 1N5819WS per input", "left")
+callout("J1", (520, 250 + 20), YELLOW, "Solar_5V", "own 1N5819W · 0.5A max", "left")
 for py in (302, 482):
     wire([(240, py), (270, py), (270, 650), (solar_box[0], 650)], RED, 4)
 

@@ -82,10 +82,14 @@ def X(pts):
 
 # ---------------------------------------------------------------- solar inputs
 r10_1, r10_2 = P("R10", "1"), P("R10", "2")
-track("/PANEL1", [P("J1", "1"), (14.74, 1.95), (r10_1[0], 1.95), r10_1], 0.4)
-track("/PANEL1_D", [r10_2, (17.625, 4.15), (17.4, 4.375), P("D5", "2")], 0.4)
+j1_1, d5_2 = P("J1", "1"), P("D5", "2")
+track("/PANEL1", [j1_1, (j1_1[0] + 0.45, 1.95), (r10_1[0], 1.95), r10_1], 0.4)
+# down from R10, then 45 degrees into D5's anode pad
+track("/PANEL1_D", [r10_2, (r10_2[0], d5_2[1] - (r10_2[0] - d5_2[0])), d5_2], 0.4)
 for j, d in (("J2", "D6"), ("J3", "D7"), ("J4", "D8")):
-    track(f"Net-({d}-A)", [P(j, "1"), P(d, "2")], 0.4)
+    p, q = P(j, "1"), P(d, "2")
+    jog = abs(q[1] - p[1])  # D6 and D7 are a little off their connector's row: finish with a 45-degree step
+    track(f"Net-({d}-A)", [p, q] if jog < 1e-6 else [p, (q[0] - jog, p[1]), q], 0.6)
 # PV bus down the diode cathodes, with a tee into the west edge of R7's PV pad
 track("/PV", [P("D5", "1"), P("D8", "1")], 0.5)
 track("/PV", [(P("D5", "1")[0], P("R7", "1")[1]), P("R7", "1")], 0.6)
@@ -181,14 +185,14 @@ track("/PANEL1_D", [r10_2, (16.75, r10_2[1]), (16.1, r10_2[1] + 0.65), (9.2, r10
                     (8.975, r10_2[1] + 0.875), U["1"]])
 # channel 2 (R7, all panels): one hop each on B.Cu under the PV bus, then between J2 and J3
 r7_1 = P("R7", "1")
-track("/PV", [(21.3, r7_1[1]), (21.3, 9.55), (20.35, 10.5)])
+track("/PV", [(21.3, r7_1[1]), (21.3, 9.95), (20.75, 10.5)])
 track("/VIN", [(22.2, 4.2), (22.2, 4.6), (22.55, 4.95), (23.75, 4.95), (23.9, 5.1), (23.9, 10.2), (22.7, 11.4),
-               (20.35, 11.4)])
+               (20.75, 11.4)])
 for n, y in (("/PV", 10.5), ("/VIN", 11.4)):
-    via(n, (20.35, y)); via(n, (18.65, y))
-    track(n, [(20.35, y), (18.65, y)], layer=B)
-track("/PV", [(18.65, 10.5), (15.045, 10.5), (10.37, 15.175), U["15"]])
-track("/VIN", [(18.65, 11.4), (14.795, 11.4), (10.37, 15.825), U["14"]])
+    via(n, (20.75, y)); via(n, (19.05, y))  # either side of the PV bus at x = 19.9
+    track(n, [(20.75, y), (19.05, y)], layer=B)
+track("/PV", [(19.05, 10.5), (15.045, 10.5), (10.37, 15.175), U["15"]])
+track("/VIN", [(19.05, 11.4), (14.795, 11.4), (10.37, 15.825), U["14"]])
 # channel 1 (R6, battery): the pair runs down from U2, along the bottom edge, up west of R6
 track("/BATT+", [U["12"], (8.975, 26.85), (9.425, 27.3), (33.45, 27.3), (33.9, 26.85), (33.9, 16.338),
                  (34.1, 16.138), P("R6", "1")])

@@ -2903,7 +2903,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Design notes (CN3791 datasheet, Figure 1):\n- Solar inputs J1-J4: up to four 5V panels in parallel, each isolated by a 1N5819WS (SOD-323, 40V/1A). MPPT senses VIN after these diodes,\n  so each panel sits ~0.3-0.45V above the 4.42V setpoint (~4.7-4.9V: under a cool panel's ~5V Vmp, nearer a hot one's). Panels peak at ~200-300mA each.\n- Charge current: ICH = 120mV / R5 = 120mV / 0.15R = 0.8A, leaving margin on the 1.0A connector contacts (R5 = 0.24R for 0.5A).\n- MPPT setpoint: VMPPT = 1.205V x (1 + R3/R4) = 1.205 x (1 + 26.7k/10k) = 4.42V. Charging starts once MPPT > 1.23V (VIN > 4.51V).\n- L1: datasheet requires L > 5 x (VCC - VBAT) uH = 16uH at 6V Voc / 2.8V batt. 22uH gives ~0.2A ripple at 6V in, 3.7V batt.\n- Datasheet blocking diode D1 omitted to save ~0.4V headroom: D5-D8 keep the battery out of the panels; the CN3791 then draws ~21uA\n  from the battery via L1 and Q1's body diode when dark (datasheet p.9). Reference D1 is intentionally unused.\n- Status: D4 red ON = charging, D3 green ON = charge done. Both off = no input, VIN < VBAT, or JP1 open.\n- Power connectors J1-J6 are 2-pin Micro JST 1.25 / PicoBlade-compatible (1.0A per contact); J9 I2C is the 4-pin version.\n  J7/J8 are 2.54mm pin headers for panel-mount SPST switches, or a jumper cap if unused. J1-J6 share one type, so check the silkscreen before plugging in.\n  Polarity: J1-J6 pin 1 = +, pin 2 = GND. The board marks + and - at each of these connectors. Q2 blocks a reversed cell on J5.\n  J7 SW_BATT isolates the cell from charger and load. J8 SW_LOAD switches only VOUT (J6), so the cell keeps charging with it off.\n  Rate both switches >= 1A or the module's peak current, whichever is higher (battery current is charge OR load, not the sum).\n  With SW_BATT off in sun the CN3791 sees no battery and VBAT pulses near 4.2V: keep SW_LOAD off then.\n- INA3221 (U2, I2C 0x42: A0 = SDA, the Meshtastic and MeshCore default). CH1 = R6 battery (BATT+ -> cell), + charging / - discharging;\n  CH2 = R7 solar total (PV -> VIN); CH3 = R10 panel 1 alone (J1 -> D5). Bus voltage is read at each IN- pin: cell, VIN, panel 1.\n  All shunts 0.1R, as both firmwares assume: +/-163.8mV full scale = +/-1.64A, 0.4mA steps. Alert outputs unused; VPU tied to VS.\n  J9 to MCU: 1 VCC_MCU (3.3-5V, powers U2 and pull-ups), 2 GND, 3 SCL, 4 SDA. R8/R9 10k pull-ups: omit if the MCU board has them."
+	(text "Design notes (CN3791 datasheet, Figure 1):\n- Solar inputs J1-J4: up to four 5V panels in parallel, each isolated by a 1N5819W (SOD-123, 40V/1A). MPPT senses VIN after these diodes,\n  so each panel sits ~0.3-0.45V above the 4.42V setpoint (~4.7-4.9V: under a cool panel's ~5V Vmp, nearer a hot one's). Up to 0.5A per input.\n- Charge current: ICH = 120mV / R5 = 120mV / 0.15R = 0.8A, leaving margin on the 1.0A connector contacts (R5 = 0.24R for 0.5A).\n- MPPT setpoint: VMPPT = 1.205V x (1 + R3/R4) = 1.205 x (1 + 26.7k/10k) = 4.42V. Charging starts once MPPT > 1.23V (VIN > 4.51V).\n- L1: datasheet requires L > 5 x (VCC - VBAT) uH = 16uH at 6V Voc / 2.8V batt. 22uH gives ~0.2A ripple at 6V in, 3.7V batt.\n- Datasheet blocking diode D1 omitted to save ~0.4V headroom: D5-D8 keep the battery out of the panels; the CN3791 then draws ~21uA\n  from the battery via L1 and Q1's body diode when dark (datasheet p.9). Reference D1 is intentionally unused.\n- Status: D4 red ON = charging, D3 green ON = charge done. Both off = no input, VIN < VBAT, or JP1 open.\n- Power connectors J1-J6 are 2-pin Micro JST 1.25 / PicoBlade-compatible (1.0A per contact); J9 I2C is the 4-pin version.\n  J7/J8 are 2.54mm pin headers for panel-mount SPST switches, or a jumper cap if unused. J1-J6 share one type, so check the silkscreen before plugging in.\n  Polarity: J1-J6 pin 1 = +, pin 2 = GND. The board marks + and - at each of these connectors. Q2 blocks a reversed cell on J5.\n  J7 SW_BATT isolates the cell from charger and load. J8 SW_LOAD switches only VOUT (J6), so the cell keeps charging with it off.\n  Rate both switches >= 1A or the module's peak current, whichever is higher (battery current is charge OR load, not the sum).\n  With SW_BATT off in sun the CN3791 sees no battery and VBAT pulses near 4.2V: keep SW_LOAD off then.\n- INA3221 (U2, I2C 0x42: A0 = SDA, the Meshtastic and MeshCore default). CH1 = R6 battery (BATT+ -> cell), + charging / - discharging;\n  CH2 = R7 solar total (PV -> VIN); CH3 = R10 panel 1 alone (J1 -> D5). Bus voltage is read at each IN- pin: cell, VIN, panel 1.\n  All shunts 0.1R, as both firmwares assume: +/-163.8mV full scale = +/-1.64A, 0.4mA steps. Alert outputs unused; VPU tied to VS.\n  J9 to MCU: 1 VCC_MCU (3.3-5V, powers U2 and pull-ups), 2 GND, 3 SCL, 4 SDA. R8/R9 10k pull-ups: omit if the MCU board has them."
 		(exclude_from_sim no)
 		(at 33.782 167.894 0)
 		(effects
@@ -3988,7 +3988,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819WS"
+		(property "Value" "1N5819W"
 			(at 39.37 102.87 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3998,7 +3998,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 39.37 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -4020,7 +4020,7 @@
 				)
 			)
 		)
-		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
+		(property "Description" "40V 600mV@1A 1A SOD-123 Schottky Barrier Diodes, SOD-123"
 			(at 39.37 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -4222,7 +4222,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819WS"
+		(property "Value" "1N5819W"
 			(at 39.37 77.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4232,7 +4232,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 39.37 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -4254,7 +4254,7 @@
 				)
 			)
 		)
-		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
+		(property "Description" "40V 600mV@1A 1A SOD-123 Schottky Barrier Diodes, SOD-123"
 			(at 39.37 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -5316,7 +5316,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819WS"
+		(property "Value" "1N5819W"
 			(at 39.37 90.17 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5326,7 +5326,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 39.37 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -5348,7 +5348,7 @@
 				)
 			)
 		)
-		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
+		(property "Description" "40V 600mV@1A 1A SOD-123 Schottky Barrier Diodes, SOD-123"
 			(at 39.37 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -8999,7 +8999,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819WS"
+		(property "Value" "1N5819W"
 			(at 45.47 64.77 0)
 			(effects
 				(font
@@ -9007,7 +9007,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SOD-123"
 			(at 46.99 60.96 0)
 			(hide yes)
 			(effects
@@ -9025,7 +9025,7 @@
 				)
 			)
 		)
-		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
+		(property "Description" "40V 600mV@1A 1A SOD-123 Schottky Barrier Diodes, SOD-123"
 			(at 46.99 60.96 0)
 			(hide yes)
 			(effects

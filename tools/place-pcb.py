@@ -37,11 +37,16 @@ PLACEMENT = {
     "R8": (5.3, 8.7, 180),
     # Solar inputs: connector pin 1 faces its diode's anode; cathodes line up on the PV bus.
     # Panel 1 runs through R10 (INA3221 channel 3 shunt, 0603) in D5's place, low enough for its
-    # label above it; D5 drops below it, its cathode still on the PV bus line at x = 19.5.
-    "J1": (14.29, 2.4, 180), "R10": (18.45, 3.0, 180), "D5": (18.45, 4.8, 180),
-    "J2": (14.29, 8.7, 180), "D6": (18.45, 8.7, 180),
-    "J3": (14.29, 15.0, 180), "D7": (18.45, 15.0, 180),
-    "J4": (14.29, 21.3, 180), "D8": (18.45, 21.3, 180),
+    # label above it; D5 drops below it, its cathode still on the PV bus line at x = 19.9.
+    # The diodes are SOD-123 (4.7 mm courtyard): they fill the strip between the connectors'
+    # courtyards (15.88) and R7's (20.62), which is why J1-J4 sit at 13.84 and not 14.29.
+    # D6 is 0.35 mm lower so D5's label fits above it; J2 only 0.2 mm, or its own label would
+    # not fit above J3. J3 can only move as far as U2's
+    # courtyard allows, so D7 sits further right and 0.3 mm higher, clear of R2's courtyard.
+    "J1": (13.84, 2.4, 180), "R10": (18.45, 3.0, 180), "D5": (18.25, 4.95, 180),
+    "J2": (13.84, 8.9, 180), "D6": (18.25, 9.05, 180),
+    "J3": (13.99, 15.0, 180), "D7": (18.4, 14.7, 180),
+    "J4": (13.84, 21.3, 180), "D8": (18.25, 21.3, 180),
     # Solar shunt and input caps next to the P-FET (short hot loop: C1 -> Q1 -> D2).
     "R7": (21.8, 5.4, 90),
     "C1": (25.3, 5.4, 270),
@@ -84,8 +89,29 @@ FUNCTION_TEXT = 0.8  # mm
 FUNCTION_LABEL_RIGHT = {}
 SOLAR_LABEL = "Solar_5V"  # one label for J1-J4, with a bracket along their left side
 SOLAR_BRACKET_X = 10.75
-# Module ID, centred and mirrored on B.Silkscreen: (text, height mm)
-BACK_TEXT = [("Solar Charge Module v1.1", 1.2), ("by JaisorGadgets", 1.0), ("Nov. 9, 2026", 1.0)]
+# Back label, mirrored on B.Silkscreen: module ID, then ratings and a disclaimer. (text, height mm)
+# per line, None for a gap. Centred on BACK_X, the middle of the strip between the solder pads of
+# J1-J4 and J5/J6, and centred top to bottom. Limits: 20 V is set by C1/C5 (25 V) and the CN3791's
+# MPPT pin (6.5 V max through R3/R4); 0.5 A per input is about 0.2 W in a 1N5819W (SOD-123); 1 A is the
+# PicoBlade contact rating at J5/J6.
+BACK_TEXT = [
+    ("SNAP Power Controller v1.1", 1.2),
+    ("by JaisorGadgets - Nov. 14, 2026", 1.0),
+    None,
+    ("CHECK POLARITY BEFORE USE", 1.0),
+    ("BATTERY: 1S LI-ION 4.2V ONLY", 1.0),
+    ("SOLAR: 5-6V PANELS, 20V MAX,", 1.0),
+    ("0.5A MAX PER INPUT", 1.0),
+    ("LOAD (VOUT): 1A MAX", 1.0),
+    None,
+    ("PROVIDED AS IS. NO WARRANTY.", 1.0),
+    ("USE AT YOUR OWN RISK.", 1.0),
+    ("LIABILITY LIMITED TO", 1.0),
+    ("THE PURCHASE PRICE.", 1.0),
+]
+BACK_X = 28.0  # mm
+BACK_LINE_GAP = 0.8  # between lines, added to the text height
+BACK_BLOCK_GAP = 0.7  # extra, for a None entry
 # + and - on F.Silkscreen under each power connector, either side of its reference, on the side of
 # the matching pad: GND pad "-", the other "+".
 POLARITY_REFS = ("J1", "J2", "J3", "J4", "J5", "J6")
@@ -209,6 +235,18 @@ def silk_line(board, a, b):
     return seg
 
 
+def back_lines():
+    """(text, height, y) for each BACK_TEXT line, the block centred on the board's height."""
+    steps = [BACK_BLOCK_GAP if e is None else e[1] + BACK_LINE_GAP for e in BACK_TEXT]
+    y = H / 2 - (sum(steps) - steps[-1]) / 2
+    out = []
+    for e, step in zip(BACK_TEXT, steps):
+        if e is not None:
+            out.append((e[0], e[1], round(y, 3)))
+        y += step
+    return out
+
+
 def board_silk(board, fps, boxes):
     """Function labels, the shared Solar_5V label with its bracket, and the module ID on the
     back. Returns the new items (board coordinates) so reference labels can avoid them."""
@@ -241,10 +279,8 @@ def board_silk(board, fps, boxes):
             ink = t.GetEffectiveTextShape().BBox()
             t.Move(pcbnew.VECTOR2I(0, cb.GetBottom() + mm(LABEL_GAP + POLARITY_TEXT / 2) - ink.Centre().y))
             items.append(t)
-    y = H / 2 - 1.6
-    for text, height in BACK_TEXT:
-        silk_text(board, text, W / 2, y, height, layer=pcbnew.B_SilkS)
-        y += height + 0.8
+    for text, height, y in back_lines():
+        silk_text(board, text, BACK_X, y, height, layer=pcbnew.B_SilkS)
 
     # I2C connector: function label under J9 on the front, pin names beside its pads on the back
     # (no room between the pads and the right column on the front).
@@ -351,7 +387,9 @@ def main():
     refs = list(boxes)
     for i, a in enumerate(refs):
         for b in refs[i + 1:]:
-            if fps[a].IsFlipped() == fps[b].IsFlipped() and boxes[a].Intersects(boxes[b]):
+            # The boxes include the 0.05 mm courtyard line, so courtyards that only touch (the
+            # SOD-123 diodes against their connectors) would count; DRC compares the centre lines.
+            if fps[a].IsFlipped() == fps[b].IsFlipped() and inflate(boxes[a], -0.03).Intersects(inflate(boxes[b], -0.03)):
                 problems.append(f"courtyard overlap {a}/{b}")
         if not inside_board(boxes[a]) and not a.startswith("H"):
             problems.append(f"{a} too close to the edge")

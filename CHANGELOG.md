@@ -2,6 +2,16 @@
 
 Changes to the Solar Charge Module that matter to someone building or using the board. Versions match the release tags and the label on the back of the board.
 
+## Unreleased
+
+Changes on `main` since the v1.1 release files. The solar input column and the back silkscreen differ; don't mix these files with the released Gerbers, BOM or placement file.
+
+- The input diodes D5–D8 are 1N5819W in SOD-123 (was 1N5819WS in SOD-323), so each solar input is good for 0.5 A instead of about 0.3 A. To fit them, J1, J2 and J4 move 0.45 mm left and J3 0.3 mm; J2 is also 0.2 mm lower. The mounting holes and the other connectors don't move.
+
+- The back label reads "SNAP Power Controller v1.1 / by JaisorGadgets - Nov. 14, 2026", the project's new name.
+- Printed under it: check polarity; battery 1S Li-ion 4.2 V only; solar 5–6 V panels, 20 V max, 0.5 A max per input; load 1 A max; and a notice that the board is provided as is, with no warranty, and liability limited to the purchase price.
+- The README lists the same limits under Safety, and gives the board's dimensions.
+
 ## v1.1 (2026-11-09)
 
 Not built or tested yet. ERC reports 0 violations; DRC reports 0 violations, 0 unconnected items and 0 schematic parity issues. The test results in the README are from v1.0 boards.

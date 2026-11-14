@@ -40,7 +40,7 @@ In the SNAP v1.2 example build, shown below, the board replaces several separate
 | Example build part | With this board |
 |---|---|
 | CN3158 MPPT module (SDBK03TA) | CN3791 MPPT buck charger, tuned for 5V panels (VIN held at 4.42V) and charging at 0.8A |
-| One 1N5819 per panel, soldered inline | A 1N5819WS per input on the board, for up to four panels |
+| One 1N5819 per panel, soldered inline | A 1N5819W per input on the board, for up to four panels |
 | Hand-soldered panel, battery and node wiring | Plug-in connectors for every connection: Micro JST 1.25, with 2.54mm pin headers for the switches |
 | Latching on/off switch wired into the battery lead | Two switch connectors: SW_BATT cuts the battery, SW_LOAD cuts only the node |
 | (none) | INA3221 power monitor on I2C, reading the battery, the total solar input and panel 1 at once |
@@ -74,7 +74,7 @@ In Meshtastic, enable power metrics in the telemetry settings so the readings ar
 
 ## Features
 
-- **Solar input:** up to four 5V panels in parallel (Micro JST 1.25), each isolated by its own 1N5819WS Schottky (SOD-323) so a shaded or unplugged panel doesn't drag the others down.
+- **Solar input:** up to four 5V panels in parallel (Micro JST 1.25), each isolated by its own 1N5819W Schottky (SOD-123), good for 0.5A per input, so a shaded or unplugged panel doesn't drag the others down.
 - **MPPT charging:** [CN3791](https://naylampmechatronics.com/img/cms/001216/CN3791.PDF) PWM buck charger with constant-voltage MPPT set to 4.42V input. Charges at 0.8A to 4.2V (CC/CV, trickle charge for deeply discharged cells, automatic recharge).
 - **Battery and load switching:** connectors for two panel-mount switches. **SW_BATT** disconnects the battery from everything. **SW_LOAD** cuts only the output, so the battery keeps charging.
 - **Output:** VOUT connector (Micro JST 1.25) that powers the module from the battery.
@@ -94,7 +94,7 @@ The schematic follows the CN3791 datasheet's typical application circuit (Figure
 | MPPT setpoint | 4.42V at VIN (R3/R4 = 26.7k/10k) | Chosen for panels that measure about 5.5V open-circuit. It's below the CN3791's specified 4.5V minimum input. Typical parts run down to their 3.8V undervoltage lockout, but the datasheet doesn't guarantee it. With 6V panels, use R3 = 30.1k (4.83V), which stays in spec. V<sub>MPPT</sub> = 1.205V × (1 + R3/R4). The panels sit one diode drop higher (~4.7–4.9V), a little under a cool 5V panel's max-power voltage of about 5.0V. That voltage falls about 0.4% per °C, to about 4.2V at a 65°C cell temperature, and a fixed set point above it cuts the panel's output. Modeled for a 10-cell panel, 4.42V gives 99% of maximum power at 25°C and 84% at 65°C. v1.0's 4.58V (28.0k) gives 100% and 71%. |
 | Blocking diode D1 | omitted | The input diodes already stop the battery feeding back into the panels. Leaving D1 out saves ~0.4V of headroom; the trade-off is ~21µA of battery drain in the dark. |
 | Inductor | 22µH, Bourns SRN6045TA | Meets the datasheet's L > 5 × (VCC − VBAT) µH, with ~0.2A ripple. |
-| Input diodes | 1N5819WS, SOD-323 (40V/1A) | The panels peak at ~200–300mA each, so the SMD part has plenty of margin and saves ~12mm of board width over DO-41. |
+| Input diodes | 1N5819W, SOD-123 (40V/1A) | Rated 0.5A per input here: about 0.2W in the diode, which the SOD-123 package handles with margin in a warm enclosure. The first v1.1 files used the smaller SOD-323 1N5819WS, which is only good for about 0.3A. |
 
 ## PCB
 
@@ -106,7 +106,7 @@ The schematic follows the CN3791 datasheet's typical application circuit (Figure
 | Area | Parts |
 |---|---|
 | Left end | M3 mounting holes H1/H3 in the corners. Between them, the 4-pin I2C connector J9 at the edge and the INA3221 (U2) beside it, with its bypass capacitor C6 and the I2C pull-ups R8/R9 above |
-| Left column | Solar inputs J1–J4, each with its 1N5819WS (D5–D8). Panel 1's shunt R10 sits beside J1, with D5 just below it |
+| Left column | Solar inputs J1–J4, each with its 1N5819W (D5–D8). Panel 1's shunt R10 sits beside J1, with D5 just below it |
 | Top middle | Buck power stage in current-flow order: R7, C1/C5, Q1, D2, L1, R5, C3 |
 | Middle | CN3791 (U1) with its support parts and status LEDs, and JP1, the LED solder jumper, right of R1 |
 | Right middle | Under L1: battery shunt R6 and reverse-battery MOSFET Q2, then VOUT (J6) and battery (J5) |
@@ -132,15 +132,15 @@ The [wiring diagram](#built-for-solar-mesh-nodes) includes a dimension drawing t
 - **Solar inputs:** one `Solar_5V` label, with a bracket along the four solar inputs (J1–J4).
 - **Polarity:** `-` and `+` under the solar, battery and VOUT connectors (J1–J6), on the side of the matching pin.
 - **I2C connector:** `I2C` under J9 on the front (J9 has no reference label; there's no room for both). The pin names (`VCC`, `GND`, `SCL`, `SDA`) are printed beside its pads on the back.
-- **Back:** the module ID, "Solar Charge Module v1.1 / by JaisorGadgets / Nov. 9, 2026".
+- **Back:** the module ID, "SNAP Power Controller v1.1 / by JaisorGadgets - Nov. 14, 2026". Under it, a reminder to check polarity, the limits listed under [Safety](#safety), and a short no-warranty notice.
 
 **Routing** (drawn by hand in `tools/draw-routes.py`, so it comes out the same on every run):
 
-- **Ground:** the bottom layer is a GND plane in one piece, covering about 87% of the board, and the top layer has a GND fill. Every surface-mount GND pad gets its own via down to the plane, and 46 stitching vias on a 3mm grid tie the two pours together.
+- **Ground:** the bottom layer is a GND plane in one piece, covering about 87% of the board, and the top layer has a GND fill. Every surface-mount GND pad gets its own via down to the plane, and 43 stitching vias on a 3mm grid tie the two pours together.
 - **Track widths:** power paths are 0.8mm, 0.4mm into the small diode pads. Signals are 0.25mm, with 0.2mm on the sense lines where they squeeze past pads.
 - **Kelvin sensing:** the CN3791's current-sense pins and each INA3221 channel's two inputs connect straight to the pads of their shunt resistors (R5; R6, R7, R10). Each channel's two sense lines run side by side. Channel 3's pair runs over and under J1, channel 2's passes between J2 and J3, and channel 1's follows the bottom edge from the battery shunt to U2.
 - **Layer use:** nearly all track is on the top layer: about 454mm, against 25mm on the bottom. The bottom layer only carries short hops: the gate drive under VIN, VIN to R3, the two channel 2 sense lines under the PV bus, and three links under U2.
-- **Size:** 212 track segments and 68 vias, 57 of them on GND.
+- **Size:** 213 track segments and 65 vias, 54 of them on GND.
 - **Checks:** DRC reports 0 violations and 0 unconnected items, and schematic parity is clean.
 
 Review it before ordering, especially the buck converter's switching loop (C1 → Q1 → D2, which returns through the ground plane).
@@ -208,6 +208,17 @@ This is an experimental design for charging a lithium-ion cell. It's provided as
 - Using a protected cell or a separate protection circuit. The CN3791 charges the cell but doesn't protect it from over-discharge or short circuits.
 - Fusing, wiring and an enclosure suited to where the node is installed, including outdoor heat and moisture.
 - Not using it where a failure could hurt someone or damage property.
+
+**Limits**, also printed on the back of the board:
+
+| | Limit | Set by |
+|---|---|---|
+| Battery | One Li-ion or LiPo cell (1S), charged to 4.2V | The CN3791's fixed charge voltage |
+| Panel voltage | 20V open-circuit at most. The board is tuned for 5–6V panels, and a higher-voltage panel delivers little power without a new R3 | The 25V input capacitors and the CN3791's MPPT pin |
+| Panel current | 0.5A per input | Heat in each input's 1N5819W diode |
+| Load on VOUT | 1A | The connector contacts at J5 and J6 |
+
+**No warranty:** the board is provided as is, and you use it at your own risk. Where the law allows a limit, liability for a board you bought is limited to the price you paid for it. The design itself is covered by the disclaimer in the [licence](#license).
 
 ## Fabrication
 

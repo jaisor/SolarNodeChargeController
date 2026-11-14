@@ -195,6 +195,9 @@ const FP = {
   c0603: "Capacitor_SMD:C_0603_1608Metric",
   c1206: "Capacitor_SMD:C_1206_3216Metric",
   led: "LED_SMD:LED_0603_1608Metric",
+  // D5-D8 are 1N5819W in SOD-123. KiCad has no symbol for it, so they use the 1N5819WS symbol
+  // (same pins) with this footprint and their own value.
+  sod123: "Diode_SMD:D_SOD-123",
   // Micro JST 1.25 (Molex PicoBlade-compatible) headers; mate with 51021 female cable housings.
   pico2: "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical",
   pico4: "Connector_Molex:Molex_PicoBlade_53047-0410_1x04_P1.25mm_Vertical",
@@ -217,14 +220,14 @@ for (let i = 0; i < 4; i++) {
     // Panel 1 alone, for INA3221 channel 3: J1 -> R10 -> D5. D5 moves right to make room.
     const R10 = placeByPin("R10", "Device:R", "1", P(33.02, y), { rot: 90, value: "0.1R 1%", fp: FP.r0603, textAt: { ref: [0, -3.81], val: [-0.51, 3.81] } });
     // Value nudged left, off the PV bus line at x = BUS_X
-    const D = placeByPin("D5", "Diode:1N5819WS", "2", P(43.18, y), { rot: 180, value: "1N5819WS", textAt: { ref: [0, -3.81], val: [-1.52, 3.81] } });
+    const D = placeByPin("D5", "Diode:1N5819WS", "2", P(43.18, y), { rot: 180, value: "1N5819W", fp: FP.sod123, textAt: { ref: [0, -3.81], val: [-1.52, 3.81] } });
     wire(J.pin("1"), R10.pin("1"));
     wire(R10.pin("2"), D.pin("2"));
     stub(R10.pin("1"), "up", "PANEL1", 2.54);
     stub(R10.pin("2"), "up", "PANEL1_D", 2.54);
     if (D.pin("1").x !== BUS_X) throw new Error("D5 cathode is not on the PV bus");
   } else {
-    const D = placeByPin(`D${i + 5}`, "Diode:1N5819WS", "2", P(35.56, y), { rot: 180, value: "1N5819WS" });
+    const D = placeByPin(`D${i + 5}`, "Diode:1N5819WS", "2", P(35.56, y), { rot: 180, value: "1N5819W", fp: FP.sod123 });
     wire(J.pin("1"), D.pin("2"));
     wire(D.pin("1"), P(BUS_X, y));
   }
@@ -411,8 +414,8 @@ TEXTS.push({
   at: P(33.782, 167.894),
   text: [
     "Design notes (CN3791 datasheet, Figure 1):",
-    "- Solar inputs J1-J4: up to four 5V panels in parallel, each isolated by a 1N5819WS (SOD-323, 40V/1A). MPPT senses VIN after these diodes,",
-    "  so each panel sits ~0.3-0.45V above the 4.42V setpoint (~4.7-4.9V: under a cool panel's ~5V Vmp, nearer a hot one's). Panels peak at ~200-300mA each.",
+    "- Solar inputs J1-J4: up to four 5V panels in parallel, each isolated by a 1N5819W (SOD-123, 40V/1A). MPPT senses VIN after these diodes,",
+    "  so each panel sits ~0.3-0.45V above the 4.42V setpoint (~4.7-4.9V: under a cool panel's ~5V Vmp, nearer a hot one's). Up to 0.5A per input.",
     "- Charge current: ICH = 120mV / R5 = 120mV / 0.15R = 0.8A, leaving margin on the 1.0A connector contacts (R5 = 0.24R for 0.5A).",
     "- MPPT setpoint: VMPPT = 1.205V x (1 + R3/R4) = 1.205 x (1 + 26.7k/10k) = 4.42V. Charging starts once MPPT > 1.23V (VIN > 4.51V).",
     "- L1: datasheet requires L > 5 x (VCC - VBAT) uH = 16uH at 6V Voc / 2.8V batt. 22uH gives ~0.2A ripple at 6V in, 3.7V batt.",
@@ -451,7 +454,8 @@ function emitPart(p) {
   const libVal = (name) => (p.sym.text.match(new RegExp(`\\(property "${name}" "((?:[^"\\\\]|\\\\.)*)"`)) || [])[1];
   const libFp = libVal("Footprint") || "";
   const libDs = libVal("Datasheet") || "~";
-  const libDesc = libVal("Description") || "";
+  let libDesc = libVal("Description") || "";
+  if (o.fp === FP.sod123) libDesc = libDesc.replace(/SOD-323/g, "SOD-123");
   // Field angles are relative to the symbol, so counter-rotate to keep text horizontal.
   // Text is centre-justified; its width is estimated to park it beside the body.
   const w = (s) => s.replace(/~\{|\}/g, "").length * 1.1;
